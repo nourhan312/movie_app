@@ -10,6 +10,7 @@ class signUpScreen extends StatelessWidget {
   }
 }
 
+
 class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
