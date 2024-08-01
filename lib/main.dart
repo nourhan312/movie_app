@@ -21,11 +21,8 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           home: OnboardingScreen(),
           title: 'Movie App',
-          theme: ThemeData(
-            brightness: Brightness.dark
-          ),
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.onBoardingScreen,
+          initialRoute: Routes.loginScreen,
           onGenerateRoute: appRouter.generateRoute,
         ));
   }
