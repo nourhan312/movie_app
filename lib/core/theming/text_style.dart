@@ -117,4 +117,16 @@ class TextStyles {
     fontSize: 48.sp,
     fontWeight: FontWeightHelper.medium,
   );
+  static const textSkip = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: Color.fromRGBO(0, 0, 0, 0.5), // Use Color.fromRGBO for opacity
+  );
+
+  static const textOnBoarding = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w500,
+    color: Color(0xff6D6D6D),
+  );
+
 }
