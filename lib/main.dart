@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp(appRouter: AppRouter(),));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AppRouter appRouter;
+  const MyApp({super.key, required this.appRouter});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-      ),
-      home: const Scaffold(),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        child: MaterialApp(
+          title: 'Movie App',
+          theme: ThemeData(
+            brightness: Brightness.dark
+          ),
+          debugShowCheckedModeBanner: false,
+          initialRoute: Routes.onBoardingScreen,
+          onGenerateRoute: appRouter.generateRoute,
+        ));
   }
+
 }
