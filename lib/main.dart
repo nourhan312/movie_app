@@ -6,7 +6,9 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 
 void main() {
-  runApp( MyApp(appRouter: AppRouter(),));
+  runApp(MyApp(
+    appRouter: AppRouter(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,12 +21,10 @@ class MyApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         child: MaterialApp(
-          home: OnboardingScreen(),
           title: 'Movie App',
           debugShowCheckedModeBanner: false,
           initialRoute: Routes.loginScreen,
           onGenerateRoute: appRouter.generateRoute,
         ));
   }
-
 }
