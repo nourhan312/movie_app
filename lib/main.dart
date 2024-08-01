@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Movie App',
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.signUpScreen,
+          initialRoute: Routes.loginScreen,
           onGenerateRoute: appRouter.generateRoute,
         ));
   }
