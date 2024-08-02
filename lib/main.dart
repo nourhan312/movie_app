@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/features/search/ui/search.dart';
 
 import 'core/networking/dio_helper.dart';
 import 'core/routing/app_router.dart';
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         child: MaterialApp(
+          home: Search(),
           title: 'Movie App',
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.loginScreen,
+          //initialRoute: Routes.loginScreen,
           onGenerateRoute: appRouter.generateRoute,
         ));
   }
