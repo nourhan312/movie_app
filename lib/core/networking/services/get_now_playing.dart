@@ -5,7 +5,7 @@ import 'package:movie_app/core/networking/dio_helper.dart';
 import '../../../features/home/data/models/movie_model.dart';
 
 class GetNowPlaying {
-  Future<List<ResultModel>> getTopRatedMovies() async {
+  static Future<List<ResultModel>> getTopRatedMovies() async {
 
     try {
       final respone =
