@@ -123,22 +123,22 @@ class TextStyles {
   static TextStyle font20Regular = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Color(0xff6D6D6D),
+    color: const Color(0xff6D6D6D),
   );
   static TextStyle font20Medium = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.medium,
-    color: Color(0xff464646),
+    color: const Color(0xff464646),
   );
   static TextStyle font22Regular = TextStyle(
-    fontSize: 22.sp,
+    fontSize: 19.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Color(0xff6D6D6D),
+    color: const Color(0xff6D6D6D),
   );
   static TextStyle font25Regular = TextStyle(
     fontSize: 25.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Color(0xff6D6D6D),
+    color: const Color(0xff6D6D6D),
   );
   static TextStyle font27semiBold = TextStyle(
     fontSize: 27.sp,
