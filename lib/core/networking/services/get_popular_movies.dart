@@ -5,7 +5,7 @@ import '../api_constant.dart';
 import '../dio_helper.dart';
 
 class GetPopularMovies {
-  Future<List<ResultModel>> getPopularMovies() async {
+  static Future<List<ResultModel>> getPopularMovies() async {
     try {
       final respone = await DioHelper.getData(path: ApiEndPoints.popularMovies);
       Movie movie = Movie.fromJson(respone.data);

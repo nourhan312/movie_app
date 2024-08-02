@@ -5,7 +5,7 @@ import '../../../features/home/data/models/movie_model.dart';
 import '../dio_helper.dart';
 
 class GetUpcoming {
-  Future<List<ResultModel>> getTopRatedMovies() async {
+  static Future<List<ResultModel>> getTopRatedMovies() async {
     try {
       final respone =
           await DioHelper.getData(path: ApiEndPoints.upcomingMovies);

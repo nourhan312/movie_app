@@ -6,4 +6,5 @@ class ApiEndPoints {
   static const ratedMovies = '/movie/top_rated';
   static const upcomingMovies = '/movie/upcoming';
   static const nowPlayingMovies = '/movie/now_playing';
+  static String movieReviews(int movieId) => '/movie/$movieId/reviews';
 }

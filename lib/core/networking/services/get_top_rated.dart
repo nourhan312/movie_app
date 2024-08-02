@@ -4,7 +4,7 @@ import 'package:movie_app/core/networking/dio_helper.dart';
 import 'package:movie_app/features/home/data/models/movie_model.dart';
 
 class GetTopRated {
-  Future<List<ResultModel>> getTopRatedMovies() async {
+  static Future<List<ResultModel>> getTopRatedMovies() async {
     try {
       final respone = await DioHelper.getData(path: ApiEndPoints.ratedMovies);
       Movie movie = Movie.fromJson(respone.data);
