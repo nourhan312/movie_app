@@ -161,5 +161,10 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: Color(0xff6D6D6D),
   );
+  static TextStyle font27Regular = const TextStyle(
+    fontSize: 27,
+
+    color: Color(0xff464646)
+  );
 
 }
