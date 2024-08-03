@@ -6,9 +6,16 @@ import 'package:movie_app/core/widgets/primary_color_widget.dart';
 
 import '../../../core/theming/text_style.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,21 +33,23 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                const CustomTexFormField(
+                CustomTexFormField(
                   hintText: "Enter Your E-mail",
-                  isPassword: false,
+                  controller: emailController,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const CustomTexFormField(hintText: "Enter Password", isPassword: true,),
+                CustomTexFormField(
+                  hintText: "Enter Password",
+                  controller: passwordController,
+                  isPassword: true,
+                ),
                 const SizedBox(
                   height: 50,
                 ),
                 InkWell(
-                  onTap: () async {
-
-                  },
+                  onTap: () async {},
                   child: Container(
                     width: double.infinity,
                     height: 60,
@@ -69,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                       width: 5,
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         context.pushReplacementNamed(Routes.signUpScreen);
                       },
                       child: Text(

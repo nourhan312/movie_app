@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../features/home/data/models/movie_model.dart';
-import '../api_constant.dart';
+import '../api_endpoints.dart';
 import '../dio_helper.dart';
 
 class GetPopularMovies {
