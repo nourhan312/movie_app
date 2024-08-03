@@ -35,9 +35,9 @@ class HomeScreen extends StatelessWidget {
         children: [
           Container(
             height: 540,
-            decoration:  BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              image: const DecorationImage(
+            decoration:  const BoxDecoration(
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight:  Radius.circular(15)),
+              image: DecorationImage(
                 
                 image: AssetImage('assets/images/test.png'),
                 fit: BoxFit.cover,
