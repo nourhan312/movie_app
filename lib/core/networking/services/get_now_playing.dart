@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movie_app/core/networking/api_constant.dart';
+import 'package:movie_app/core/networking/api_endpoints.dart';
 import 'package:movie_app/core/networking/dio_helper.dart';
 
 import '../../../features/home/data/models/movie_model.dart';

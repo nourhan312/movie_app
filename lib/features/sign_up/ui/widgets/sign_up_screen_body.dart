@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/helper/extentions.dart';
 import 'package:movie_app/core/routing/routes.dart';
 import 'package:movie_app/core/widgets/primary_color_widget.dart';
+import 'package:movie_app/features/sign_up/ui/widgets/signup_button.dart';
+import 'package:movie_app/features/sign_up/ui/widgets/signup_text_form_filed_section.dart';
+import '../../../../core/theming/text_style.dart';
 
-import '../../../core/theming/text_style.dart';
-import '../../../core/widgets/custom_text_form_field.dart';
 
 class SignUpScreenBody extends StatelessWidget {
   const SignUpScreenBody({super.key});
@@ -23,37 +24,8 @@ class SignUpScreenBody extends StatelessWidget {
                   'SIGN-UP',
                   style: TextStyles.font48SemiBold,
                 ),
-                const SizedBox(height: 20),
-                const CustomTexFormField(
-                  isPassword: false,
-                  hintText: "Enter your NAME",
-                ),
-                const SizedBox(height: 20),
-                const CustomTexFormField(
-                  hintText: 'Enter your E-mail',
-                  isPassword: false,
-                ),
-                const SizedBox(height: 20),
-                const CustomTexFormField(
-                  hintText: 'Enter Password',
-                  isPassword: true,
-                ),
-                const SizedBox(height: 70),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Handle sign-up button press
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      minimumSize: const Size(330, 55),
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 25),
-                    ),
-                    child:  Text('Sign-Up',style: TextStyles.font24Bold,),
-                  ),
-                ),
+                const SignUpTextFormFieldSection(),
+                const SignUpButton(),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -77,4 +49,3 @@ class SignUpScreenBody extends StatelessWidget {
     );
   }
 }
-

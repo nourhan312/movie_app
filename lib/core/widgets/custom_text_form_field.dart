@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 class CustomTexFormField extends StatefulWidget {
   const CustomTexFormField({
     super.key,
-    required this.isPassword,
-    required this.hintText,
+    this.isPassword,
+    required this.hintText, required this.controller,
   });
 
   final String hintText;
-  final bool isPassword;
+  final bool? isPassword;
+  final TextEditingController controller;
 
   @override
   State<CustomTexFormField> createState() => _CustomTexFormField();
@@ -16,15 +17,14 @@ class CustomTexFormField extends StatefulWidget {
 
 class _CustomTexFormField extends State<CustomTexFormField> {
   bool isSecure = true;
-  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: widget.isPassword ? isSecure : false,
-      controller: controller,
+      obscureText: widget.isPassword ?? false ? isSecure : false,
+      controller: widget.controller,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        suffixIcon: widget.isPassword
+        suffixIcon: widget.isPassword ?? false
             ? InkWell(
             onTap: () {
               isSecure = !isSecure;
