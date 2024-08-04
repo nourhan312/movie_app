@@ -1,6 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:movie_app/core/helper/hive_helper.dart';
+import 'package:movie_app/core/networking/services/search_movie.dart';
+import 'core/networking/dio_helper.dart';
 import 'package:movie_app/features/details/ui/detail_screen.dart';
 import 'package:movie_app/core/networking/services/get_movie_details.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
@@ -14,15 +19,25 @@ import 'core/networking/services/get_similar_movie.dart';
 import 'core/networking/services/get_top_rated.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
-import 'features/home/data/models/movie_model.dart';
+import 'features/home_screen/data/models/movie_model.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // Set the desired color here
     statusBarIconBrightness: Brightness.dark, // For light icons
   ));
-  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(MovieAdapter());
+  await Hive.openBox<Movie>(HiveHelpers.movieBox);
   DioHelper.init();
+
+  List<Movie> result =
+      await SearchMovie.searchMoviesByQuery(query: 'Inception');
+  for (var i in result) {
+    if (kDebugMode) {
+      print(i.originalTitle);
+    }
   Credits result = await GetCredits.getCredits(
     seriesId: 1399,
     seasonNumber: 1,
@@ -43,15 +58,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        child: MaterialApp(
-          home: HomeScreen(),
-          title: 'Movie App',
-          debugShowCheckedModeBanner: false,
-          //initialRoute: Routes.loginScreen,
-          onGenerateRoute: appRouter.generateRoute,
-        ));
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent, // Set your desired color here
+    ),
+      child: ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          child: MaterialApp(
+            title: 'Movie App',
+            debugShowCheckedModeBanner: false,
+            initialRoute: Routes.homeScreen,
+            onGenerateRoute: appRouter.generateRoute,
+          )),
+    );
   }
 }

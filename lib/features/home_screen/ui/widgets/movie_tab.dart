@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/features/home_screen/widgets/movie_category.dart';
+import 'package:movie_app/core/helper/spacing.dart';
+
+import 'movie_category.dart';
 
 class MovieTabs extends StatefulWidget {
+  const MovieTabs({super.key});
+
   @override
   _MovieTabsState createState() => _MovieTabsState();
 }
@@ -27,6 +31,12 @@ class _MovieTabsState extends State<MovieTabs> with SingleTickerProviderStateMix
       child: Column(
         children: [
           TabBar(
+            dividerColor: Colors.transparent,
+            labelColor: Colors.white,
+            indicatorColor: Colors.white,
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+            unselectedLabelColor: Colors.white.withOpacity(.4),
             controller: _tabController,
             tabs: const [
               Tab(text: 'Popular'),
@@ -35,33 +45,44 @@ class _MovieTabsState extends State<MovieTabs> with SingleTickerProviderStateMix
               Tab(text: 'Now Playing'),
             ],
           ),
+          verticalSpace(10),
           Expanded(
             child: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: _tabController,
-              children: [
+              children: const [
                 MovieCategory(
-                  movies: const [
+                  movies: [
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
+                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
                     {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
                     {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
                     {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
                   ],
                 ),
                 MovieCategory(
-                  movies: const [
+                  movies: [
                     {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
                     {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
                     {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
                   ],
                 ),
                 MovieCategory(
-                  movies: const [
+                  movies: [
                     {'title': 'Free Guy', 'image': 'assets/images/test.png'},
                     {'title': 'Free Guy', 'image': 'assets/images/test.png'},
                     {'title': 'Free Guy', 'image': 'assets/images/test.png'},
                   ],
                 ),
                 MovieCategory(
-                  movies: const [
+                  movies: [
                     {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
                     {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
                     {'title': 'Bloodshot', 'image': 'assets/images/test.png'},

@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/theming/text_style.dart';
 import 'package:movie_app/features/search/widgets/image_back.dart';
 import 'package:movie_app/features/search/widgets/text_widget_on_drawer.dart';
 
-class Search extends StatefulWidget {
-  TextInputType? textInputType;
-  TextEditingController? textController;
-  String? errorMessage, labelText;
+import '../../home_screen/ui/widgets/search.dart';
 
-  Search({
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key,
     this.textInputType,
     this.textController,
     this.errorMessage,
     this.labelText,
   });
 
+  final TextInputType? textInputType;
+  final TextEditingController? textController;
+  final String? errorMessage, labelText;
   @override
-  State<Search> createState() => _SearchState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchState extends State<Search> {
+class _SearchScreenState extends State<SearchScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -37,7 +37,7 @@ class _SearchState extends State<Search> {
                 onTap: () {
                   _scaffoldKey.currentState!.closeDrawer();
                 },
-                child: ImageBack(top: 50),
+                child: const ImageBack(top: 50),
               ),
               const SizedBox(height: 110),
               const TextWidgetOnDrawer(text: "Favorite Movies"),
@@ -57,34 +57,14 @@ class _SearchState extends State<Search> {
               onTap: () {
                 _scaffoldKey.currentState!.openDrawer();
               },
-              child: ImageBack(top: 10),
+              child: const ImageBack(top: 10),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 20, left: 20),
               child: SizedBox(
                 width: 300,
                 height: 56,
-                child: TextField(
-                  keyboardType: widget.textInputType,
-                  controller: widget.textController,
-                  decoration: InputDecoration(
-                    suffixIcon: InkWell(
-                      onTap: () {
-                        setState(() {
-                          widget.textController?.clear();
-                        });
-                      },
-                      child: const Icon(Icons.clear, size: 20),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    filled: true,
-                    hintStyle: const TextStyle(color: Color(0xff6D6D6D)),
-                    hintText: "Search",
-                    fillColor: const Color(0xffffffff),
-                  ),
-                ),
+                child: SearchTextForm(),
               ),
             ),
           ],

@@ -1,9 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/theming/text_style.dart';
+
 class MovieCategory extends StatelessWidget {
+  const MovieCategory({super.key, required this.movies});
+
   final List<Map<String, String>> movies;
 
-  MovieCategory({required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +15,8 @@ class MovieCategory extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        mainAxisSpacing: 8.0,
-        crossAxisSpacing: 8.0,
+        crossAxisSpacing: 15.0,
+        mainAxisSpacing: 20,
         childAspectRatio: 0.6,
       ),
       itemCount: movies.length,
@@ -20,17 +24,19 @@ class MovieCategory extends StatelessWidget {
         final movie = movies[index];
         return Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: CachedNetworkImage(
+                imageUrl:
+                "https://th.bing.com/th/id/R.0438cecf7c1e229e771a171015b4617a?rik=g%2fVb%2fHREm9KMiA&pid=ImgRaw&r=0",
+                fit: BoxFit.cover,
+                height: 160,
               ),
-              height: 120,
-              child: Image.asset(movie['image']!, fit: BoxFit.cover),
             ),
             const SizedBox(height: 8.0),
             Text(
               movie['title']!,
-              style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              style: TextStyles.font16SemiBold,
             ),
           ],
         );

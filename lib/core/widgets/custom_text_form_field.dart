@@ -4,12 +4,15 @@ class CustomTexFormField extends StatefulWidget {
   const CustomTexFormField({
     super.key,
     this.isPassword,
-    required this.hintText, required this.controller,
+    required this.hintText, required this.controller, this.suffixIcon, this.inputBorder, this.hintStyle,
   });
 
   final String hintText;
   final bool? isPassword;
   final TextEditingController controller;
+  final Widget? suffixIcon;
+  final InputBorder? inputBorder;
+  final TextStyle? hintStyle;
 
   @override
   State<CustomTexFormField> createState() => _CustomTexFormField();
@@ -22,9 +25,12 @@ class _CustomTexFormField extends State<CustomTexFormField> {
     return TextFormField(
       obscureText: widget.isPassword ?? false ? isSecure : false,
       controller: widget.controller,
+      cursorColor: Colors.white,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        suffixIcon: widget.isPassword ?? false
+        border: widget.inputBorder,
+        hintStyle: widget.hintStyle,
+        suffixIcon: widget.suffixIcon ?? (widget.isPassword ?? false
             ? InkWell(
             onTap: () {
               isSecure = !isSecure;
@@ -33,7 +39,7 @@ class _CustomTexFormField extends State<CustomTexFormField> {
             child: Icon(isSecure == true
                 ? Icons.remove_red_eye
                 : Icons.visibility_off_outlined))
-            : null,
+            : null),
       ),
     );
   }
