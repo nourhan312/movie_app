@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/core/networking/services/get_movie_details.dart';
+import 'package:movie_app/features/home/data/models/details_model.dart';
 import 'package:movie_app/features/search/ui/search.dart';
 
 import 'core/networking/dio_helper.dart';
@@ -15,21 +17,16 @@ void main() async {
     statusBarColor: Colors.transparent, // Set the desired color here
     statusBarIconBrightness: Brightness.dark, // For light icons
   ));
+  WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
 
-  int testMovieId = 533535; // Example movie ID for testing
+  int testMovieId = 533535;
+  MovieDetails movieDetails = await GetMovieDetails.getDetails(id: testMovieId);
 
-  // Call the getSimilar method and print the results
-  try {
-    List<ResultModel> similarMovies =
-        await GetSimilarMovie.getSimilar(id: testMovieId);
-    print("Similar Movies for Movie ID $testMovieId:");
-    for (var movie in similarMovies) {
-      print("Title: ${movie.originalTitle}, Rating: ${movie.voteAverage}");
-    }
-  } catch (e) {
-    print("Error occurred while fetching similar movies: $e");
-  }
+  print('Movie Title: ${movieDetails.title}');
+  print('Movie Overview: ${movieDetails.overview}');
+  print('Movie Poster Path: ${movieDetails.posterPath}');
+
   runApp(MyApp(
     appRouter: AppRouter(),
   ));

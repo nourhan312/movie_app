@@ -7,5 +7,6 @@ class ApiEndPoints {
   static const nowPlayingMovies = '/movie/now_playing';
   static String movieSimilar(int movieId) => '/movie/$movieId/similar';
 
+  static String movieDetails(int movieId) => '/movie/$movieId';
   static String movieReviews(int movieId) => '/movie/$movieId/reviews';
 }
