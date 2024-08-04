@@ -9,4 +9,10 @@ class ApiEndPoints {
   static String search(String query) => '/search/movie?query=$query';
   static String movieDetails(int movieId) => '/movie/$movieId';
   static String movieReviews(int movieId) => '/movie/$movieId/reviews';
+  static String movieCredits({
+    required int seriesId,
+    required int seasonNumber,
+    required int episodeNumber,
+  }) =>
+      '/tv/$seriesId/season/$seasonNumber/episode/$episodeNumber/credits';
 }
