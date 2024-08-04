@@ -36,15 +36,15 @@ class ResultModel {
 
   factory ResultModel.fromJson(Map<String, dynamic> json) {
     return ResultModel(
-      originalLanguage: json['original_language'],
-      originalTitle: json['original_title'],
-      overview: json['overview'],
-      posterPath: json['poster_path'],
-      releaseDate: json['release_date'],
-      id: json['id'],
-      voteAverage: json['vote_average'].toDouble(),
-      backdropPath: json['backdrop_path'],
-      genreIds: List<int>.from(json['genre_ids']),
+      originalLanguage: json['original_language'] ?? '',
+      originalTitle: json['original_title'] ?? '',
+      overview: json['overview'] ?? '',
+      posterPath: json['poster_path'] ?? '',
+      releaseDate: json['release_date'] ?? '',
+      id: json['id'] ?? 0,
+      voteAverage: (json['vote_average'] ?? 0.0).toDouble(),
+      backdropPath: json['backdrop_path'] ?? '',
+      genreIds: List<int>.from(json['genre_ids'] ?? []),
     );
   }
 }
