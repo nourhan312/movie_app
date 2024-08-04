@@ -45,7 +45,6 @@ class Movie extends HiveObject {
 
   @HiveField(8)
   final List<int> genreIds;
-  final double popularity;
 
   Movie({
     required this.originalLanguage,
@@ -57,7 +56,6 @@ class Movie extends HiveObject {
     required this.voteAverage,
     required this.backdropPath,
     required this.genreIds,
-    required this.popularity,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
@@ -71,7 +69,6 @@ class Movie extends HiveObject {
       voteAverage: (json['vote_average'] ?? 0.0).toDouble(),
       backdropPath: json['backdrop_path'] ?? '',
       genreIds: List<int>.from(json['genre_ids'] ?? []),
-      popularity: (json['popularity'] ?? 0.0).toDouble(),
     );
   }
 
