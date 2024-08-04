@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/networking/services/get_movie_details.dart';
+import 'package:movie_app/core/networking/services/get_trending_movie.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/features/home/data/models/credits_model.dart';
 import 'package:movie_app/features/home/data/models/details_model.dart';
@@ -23,14 +24,10 @@ void main() async {
   ));
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
-  Credits result = await GetCredits.getCredits(
-    seriesId: 1399,
-    seasonNumber: 1,
-    episodeNumber: 1,
-  );
-  List<Cast> cast = result.cast;
-  for (var element in cast) {
-    print(element.name);
+  List<ResultModel> movies =
+      await GetTrendingMovie.getTrendingMovie(timeWindow: 'day');
+  for (var element in movies) {
+    print(element.originalTitle);
   }
   runApp(MyApp(
     appRouter: AppRouter(),

@@ -21,6 +21,7 @@ class ResultModel {
   final String backdropPath;
   final String releaseDate;
   final List<int> genreIds;
+  final double popularity;
 
   ResultModel({
     required this.originalLanguage,
@@ -32,6 +33,7 @@ class ResultModel {
     required this.voteAverage,
     required this.backdropPath,
     required this.genreIds,
+    required this.popularity,
   });
 
   factory ResultModel.fromJson(Map<String, dynamic> json) {
@@ -45,6 +47,7 @@ class ResultModel {
       voteAverage: (json['vote_average'] ?? 0.0).toDouble(),
       backdropPath: json['backdrop_path'] ?? '',
       genreIds: List<int>.from(json['genre_ids'] ?? []),
+      popularity: (json['popularity'] ?? 0.0).toDouble(),
     );
   }
 }
