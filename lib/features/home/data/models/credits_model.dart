@@ -11,14 +11,21 @@ class Credits {
     required this.guestStarts,
     required this.id,
   });
-  factory Credits.fromJson(json) {
+  factory Credits.fromJson(Map<String, dynamic> json) {
     return Credits(
-      cast: (json['cast'] as List).map((e) => Cast.fromJson(e)).toList(),
-      crew: (json['crews'] as List).map((e) => Crew.fromJson(e)).toList(),
-      guestStarts: (json['guest_stars'] as List)
-          .map((e) => GuestStars.fromJson(e))
-          .toList(),
-      id: json['id'],
+      cast: (json['cast'] as List<dynamic>?)
+              ?.map((e) => Cast.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      crew: (json['crew'] as List<dynamic>?)
+              ?.map((e) => Crew.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      guestStarts: (json['guest_stars'] as List<dynamic>?)
+              ?.map((e) => GuestStars.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      id: json['id'] as int,
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:movie_app/features/home/data/models/credits_model.dart';
 
+import '../../../features/home/data/models/credits_model.dart';
 import '../api_endpoints.dart';
 import '../dio_helper.dart';
 
@@ -21,7 +21,7 @@ class GetCredits {
       return Credits.fromJson(response.data);
     } on DioException catch (e) {
       print(e.toString());
-      return Credits(cast: [], crew: [], id: -1, guestStarts: []);
+      return Credits(cast: [], crew: [], guestStarts: [], id: -1);
     }
   }
 }
