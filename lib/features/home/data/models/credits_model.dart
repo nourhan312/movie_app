@@ -55,7 +55,7 @@ class Cast {
       gender: json['gender'] as int,
       id: json['id'] as int,
       knownForDepartment: json['known_for_department'] as String,
-      name: json['name'] as String,
+      name: json['name'] as String ?? '',
       originalName: json['original_name'] as String,
       popularity: (json['popularity'] as num).toDouble(),
       profilePath: json['profile_path'] as String?,
