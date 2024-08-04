@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/networking/services/get_movie_details.dart';
+import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/features/home/data/models/details_model.dart';
 import 'package:movie_app/features/search/ui/search.dart';
 
@@ -19,14 +20,11 @@ void main() async {
   ));
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
-
-  int testMovieId = 533535;
-  MovieDetails movieDetails = await GetMovieDetails.getDetails(id: testMovieId);
-
-  print('Movie Title: ${movieDetails.title}');
-  print('Movie Overview: ${movieDetails.overview}');
-  print('Movie Poster Path: ${movieDetails.posterPath}');
-
+  List<ResultModel> result =
+      await SearchMovie.searchMoviesByQuery(query: 'Inception');
+  for (var i in result) {
+    print(i.originalTitle);
+  }
   runApp(MyApp(
     appRouter: AppRouter(),
   ));
