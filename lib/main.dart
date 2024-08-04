@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/networking/services/get_movie_details.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/features/home/data/models/details_model.dart';
+import 'package:movie_app/features/home_screen/ui/home_screen.dart';
 import 'package:movie_app/features/search/ui/search.dart';
 
 import 'core/networking/dio_helper.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         child: MaterialApp(
-          home: Search(),
+          home: HomeScreen(),
           title: 'Movie App',
           debugShowCheckedModeBanner: false,
           //initialRoute: Routes.loginScreen,
