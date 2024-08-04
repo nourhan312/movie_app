@@ -15,4 +15,9 @@ class ApiEndPoints {
     required int episodeNumber,
   }) =>
       '/tv/$seriesId/season/$seasonNumber/episode/$episodeNumber/credits';
+
+  static String movieTrending({
+    required String timeWindow,
+  }) =>
+      '/trending/movie/$timeWindow';
 }
