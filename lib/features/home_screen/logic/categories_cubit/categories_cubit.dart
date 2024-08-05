@@ -10,7 +10,7 @@ part 'categories_state.dart';
 
 class CategoriesCubit extends Cubit<CategoriesState> {
   CategoriesCubit() : super(CategoriesInitial());
-
+  //
   void getPopularMovies() async {
     emit(PopularMoviesLoading());
     try {
