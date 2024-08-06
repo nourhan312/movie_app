@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 
 class DioHelper {
+  DioHelper._();
+  static DioHelper instance = DioHelper._();
   static const String baseUrl = 'https://api.themoviedb.org/3';
   static const String apiKey = 'e144d2f7753e7f552dd6b2aea2beafb4';
-
   static const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
   static late Dio _dio;
 
@@ -21,7 +22,7 @@ class DioHelper {
     );
   }
 
-  static Future<Response> postData({
+   Future<Response> postData({
     required String path,
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParams,
