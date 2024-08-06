@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helper/spacing.dart';
-
-import 'movie_category.dart';
+import 'package:movie_app/features/home_screen/ui/widgets/tap_bar_view_section.dart';
 
 class MovieTabs extends StatefulWidget {
   const MovieTabs({super.key});
@@ -46,51 +45,7 @@ class _MovieTabsState extends State<MovieTabs> with SingleTickerProviderStateMix
             ],
           ),
           verticalSpace(10),
-          Expanded(
-            child: TabBarView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: _tabController,
-              children: const [
-                MovieCategory(
-                  movies: [
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                    {'title': 'Tomorrow War', 'image': 'assets/images/test.png'},
-                  ],
-                ),
-                MovieCategory(
-                  movies: [
-                    {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
-                    {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
-                    {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
-                  ],
-                ),
-                MovieCategory(
-                  movies: [
-                    {'title': 'Free Guy', 'image': 'assets/images/test.png'},
-                    {'title': 'Free Guy', 'image': 'assets/images/test.png'},
-                    {'title': 'Free Guy', 'image': 'assets/images/test.png'},
-                  ],
-                ),
-                MovieCategory(
-                  movies: [
-                    {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
-                    {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
-                    {'title': 'Bloodshot', 'image': 'assets/images/test.png'},
-                  ],
-                ),
-              ],
-            ),
-          ),
+          TabBarViewSection(tabController: _tabController),
         ],
       ),
     );

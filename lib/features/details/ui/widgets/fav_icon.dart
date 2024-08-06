@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FavIcon extends StatefulWidget {
+  const FavIcon({super.key});
+
   @override
   _FavIconState createState() => _FavIconState();
 }

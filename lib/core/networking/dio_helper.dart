@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 class DioHelper {
   static const String baseUrl = 'https://api.themoviedb.org/3';
   static const String apiKey = 'e144d2f7753e7f552dd6b2aea2beafb4';
-
   static const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
+
   static late Dio _dio;
 
   static void init() {

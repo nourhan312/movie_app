@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ReviewsTab extends StatelessWidget {
+  const ReviewsTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -11,7 +13,7 @@ class ReviewsTab extends StatelessWidget {
           leading: Stack(
             clipBehavior: Clip.none,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundImage: AssetImage('assets/images/circle_avatar.png'),
                 // Replace with actual image URL
                 radius: 24,
@@ -35,8 +37,8 @@ class ReviewsTab extends StatelessWidget {
               ),
             ],
           ),
-          title: Text('Iqbal Shafiq Razaan'),
-          subtitle: Text('From DC Comics comes the Suicide Squad, an antihero team of incarcerated...'),
+          title: const Text('Iqbal Shafiq Razaan'),
+          subtitle: const Text('From DC Comics comes the Suicide Squad, an antihero team of incarcerated...'),
         );
       },
     );
