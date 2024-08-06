@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/helper/spacing.dart';
+import 'package:movie_app/core/theming/text_style.dart';
 
 class ReviewsTab extends StatelessWidget {
   const ReviewsTab({super.key});
@@ -9,36 +11,43 @@ class ReviewsTab extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       itemCount: 2, // Example review count
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: Stack(
-            clipBehavior: Clip.none,
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const CircleAvatar(
                 backgroundImage: AssetImage('assets/images/circle_avatar.png'),
                 // Replace with actual image URL
                 radius: 24,
               ),
-              Positioned(
-                bottom: -20,
-                left: 0,
-                right: 0,
-                child: Container(
-                  padding: const EdgeInsets.all(2.0),
-
-                  child: const Text(
-                    '6.3',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10.0,
-                    ),
-                  ),
+              horizontalSpace(10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Title",
+                        style: TextStyles.font18SemiBoldWhite,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis),
+                    Text(
+                      " subtitle",
+                      style: TextStyles.font14Medium,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                  ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  "6.7",
+                  style: TextStyles.font18SemiBoldWhite,
+                ),
+              )
             ],
           ),
-          title: const Text('Iqbal Shafiq Razaan'),
-          subtitle: const Text('From DC Comics comes the Suicide Squad, an antihero team of incarcerated...'),
         );
       },
     );

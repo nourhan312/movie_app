@@ -44,7 +44,7 @@ class HomeScreenBody extends StatelessWidget {
             child: const CarouselSliderSection()),
         BlocProvider(
             create: (context) => CategoriesCubit()..getNowPlayingMovies()..getPopularMovies()..getTopRatedMovies()..getUpcomingMovies(),
-            child: const MovieTabs())
+            child: const MovieTabs(),)
       ],
     );
   }

@@ -14,6 +14,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
   List<Movie> upComingMovies = [];
   List<Movie> topRatedMovies = [];
   List<Movie> nowPlayingMovies = [];
+
   void getPopularMovies() async {
     emit(PopularMoviesLoading());
     try {
