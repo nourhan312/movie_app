@@ -1,5 +1,8 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+
+import '../../../features/home_screen/data/models/movie_model.dart';
+
 import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
 import '../api_endpoints.dart';
 import '../dio_helper.dart';

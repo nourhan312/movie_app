@@ -4,15 +4,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:movie_app/core/helper/hive_helper.dart';
+import 'package:movie_app/core/helper/login_hive_helper.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
+import 'package:movie_app/features/login/cubit/login_cubit.dart';
 import 'core/helper/bloc_observer.dart';
 import 'core/networking/dio_helper.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/home_screen/data/models/movie_model.dart';
+import 'package:get/get.dart';
 import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(TokenHelper.TOKEN);
+
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   await Hive.initFlutter();
@@ -25,8 +31,11 @@ void main() async {
     appRouter: AppRouter(),
   ));
 }
+
+
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
+
   const MyApp({super.key, required this.appRouter});
 
   @override

@@ -4,7 +4,7 @@ class CustomTexFormField extends StatefulWidget {
   const CustomTexFormField({
     super.key,
     this.isPassword,
-    required this.hintText, required this.controller, this.suffixIcon, this.inputBorder, this.hintStyle,
+    required this.hintText, required this.controller, this.suffixIcon, this.inputBorder, this.hintStyle,this.validator
   });
 
   final String hintText;
@@ -13,6 +13,7 @@ class CustomTexFormField extends StatefulWidget {
   final Widget? suffixIcon;
   final InputBorder? inputBorder;
   final TextStyle? hintStyle;
+  final String? Function(String?)? validator ;
 
   @override
   State<CustomTexFormField> createState() => _CustomTexFormField();
