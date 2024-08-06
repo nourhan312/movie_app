@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:movie_app/core/networking/api_endpoints.dart';
-import 'package:movie_app/core/networking/dio_helper.dart';
-
 import '../../../features/home_screen/data/models/movie_model.dart';
+import '../api_endpoints.dart';
+import '../dio_helper.dart';
 
-class GetTopRated {
-  static Future<List<Movie>> getTopRatedMovies() async {
+class SearchMovie {
+  static Future<List<Movie>> searchMoviesByQuery({
+    required query,
+  }) async {
     try {
-      final respone = await DioHelper.getData(path: ApiEndPoints.ratedMovies);
+      final respone = await DioHelper.getData(path: ApiEndPoints.search(query));
       MoviesList movie = MoviesList.fromJson(respone.data);
       return movie.result;
     } on DioException catch (e) {

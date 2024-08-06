@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/routing/routes.dart';
+import 'package:movie_app/features/home_screen/ui/home_screen.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_screen.dart';
+import 'package:movie_app/features/search/ui/search.dart';
 import 'package:movie_app/features/sign_up/ui/sign_up_screen.dart';
 import '../../features/login/ui/login_screen.dart';
 
@@ -21,6 +23,14 @@ class AppRouter {
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) =>  const LoginScreen(),
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (_) =>  const HomeScreen(),
+        );
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) =>  const SearchScreen(),
         );
       default:
         return MaterialPageRoute(
