@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
 
 import '../../../features/home_screen/data/models/movie_model.dart';
 import '../api_endpoints.dart';

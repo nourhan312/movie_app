@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:movie_app/core/helper/hive_helper.dart';
@@ -8,6 +9,7 @@ import 'core/networking/dio_helper.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/home_screen/data/models/movie_model.dart';
+import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +23,10 @@ void main() async {
   DioHelper.init();
 
   await SearchMovie.searchMoviesByQuery(query: 'Inception');
-    runApp(MyApp(
-      appRouter: AppRouter(),
-    ));
-  }
+  runApp(MyApp(
+    appRouter: AppRouter(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -32,19 +34,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
+    return BlocProvider(
+      create: (context) => CategoriesCubit(),
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent, // Set your desired color here
-    ),
-      child: ScreenUtilInit(
-          designSize: const Size(375, 812),
-          minTextAdapt: true,
-          child: MaterialApp(
-            title: 'Movie App',
-            debugShowCheckedModeBanner: false,
-            initialRoute: Routes.homeScreen,
-            onGenerateRoute: appRouter.generateRoute,
-          )),
+          statusBarColor: Colors.transparent, // Set your desired color here
+        ),
+        child: ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            child: MaterialApp(
+              title: 'Movie App',
+              debugShowCheckedModeBanner: false,
+              initialRoute: Routes.homeScreen,
+              onGenerateRoute: appRouter.generateRoute,
+            )),
+      ),
     );
   }
 }
