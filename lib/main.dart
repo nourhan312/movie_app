@@ -6,14 +6,22 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:movie_app/core/helper/hive_helper.dart';
 import 'package:movie_app/core/helper/login_hive_helper.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
+import 'package:movie_app/features/fav/provider/fav_provider.dart';
+import 'package:movie_app/features/fav/ui/fav_screen.dart';
 import 'package:movie_app/features/login/cubit/login_cubit.dart';
 import 'core/helper/bloc_observer.dart';
 import 'core/networking/dio_helper.dart';
+import 'package:provider/provider.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/home_screen/data/models/movie_model.dart';
 import 'package:get/get.dart';
 import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -27,11 +35,16 @@ void main() async {
   DioHelper.init();
 
   await SearchMovie.searchMoviesByQuery(query: 'Inception');
-  runApp(MyApp(
-    appRouter: AppRouter(),
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => FavoritesProvider()),
+
+    ],
+    child: MyApp(
+      appRouter: AppRouter(),
+    ),
   ));
 }
-
 
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -51,9 +64,10 @@ class MyApp extends StatelessWidget {
             designSize: const Size(375, 812),
             minTextAdapt: true,
             child: MaterialApp(
+              home: FavoritesScreen(),
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
-              initialRoute: Routes.homeScreen,
+              //initialRoute: Routes.homeScreen,
               onGenerateRoute: appRouter.generateRoute,
             )),
       ),
