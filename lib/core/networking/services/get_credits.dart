@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../features/home_screen/data/models/MovieCredits.dart';
+import '../../../features/details/data/models/movie_credits.dart';
 import '../api_endpoints.dart';
 import '../dio_helper.dart';
 

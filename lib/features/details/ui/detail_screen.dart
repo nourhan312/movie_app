@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/helper/spacing.dart';
+import 'package:movie_app/core/theming/text_style.dart';
 import 'package:movie_app/features/details/ui/widgets/cast_tab.dart';
 import 'package:movie_app/features/details/ui/widgets/fav_icon.dart';
 import 'package:movie_app/features/details/ui/widgets/movie_tab.dart';
 import 'package:movie_app/features/details/ui/widgets/reviwes_tab.dart';
-import 'package:movie_app/features/search/widgets/image_back.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
@@ -13,12 +14,11 @@ class DetailScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Colors.yellow,
+        backgroundColor: const Color(0xff242A32),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: const ImageBack(top: 0),
-          title: const Text('Detail'),
-          centerTitle: true,
+          leading: const BackButton(color: Colors.white,),
+          title: Text('Detail Screen',style: TextStyles.font23semiBold,),
           actions: const [FavIcon()],
         ),
         body: Column(
@@ -56,26 +56,27 @@ class DetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
+            verticalSpace(20),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 20,
-                  ),
                   Text(
                     'Spiderman No Way Home',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyles.font18SemiBoldWhite
                   ),
                 ],
               ),
             ),
-            const TabBar(
-              tabs: [
+            TabBar(
+              dividerColor: Colors.transparent,
+              labelColor: Colors.white,
+              indicatorColor: Colors.white,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+              unselectedLabelColor: Colors.white.withOpacity(.4),
+              tabs: const [
                 Tab(text: 'About Movie'),
                 Tab(text: 'Reviews'),
                 Tab(text: 'Cast'),
