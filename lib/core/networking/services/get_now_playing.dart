@@ -4,10 +4,8 @@ import 'package:movie_app/core/networking/dio_helper.dart';
 
 import '../../../features/home_screen/data/models/movie_model.dart';
 
-
 class GetNowPlaying {
-  static Future<List<Movie>> getTopRatedMovies() async {
-
+  static Future<List<Movie>> getNowPlayingMovies() async {
     try {
       final respone =
           await DioHelper.getData(path: ApiEndPoints.nowPlayingMovies);

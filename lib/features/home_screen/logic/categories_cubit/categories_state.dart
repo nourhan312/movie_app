@@ -7,8 +7,11 @@ class CategoriesInitial extends CategoriesState {}
 
 // Loading States
 class PopularMoviesLoading extends CategoriesState {}
+
 class TopRatedMoviesLoading extends CategoriesState {}
+
 class NowPlayingMoviesLoading extends CategoriesState {}
+
 class UpcomingMoviesLoading extends CategoriesState {}
 
 // Success States

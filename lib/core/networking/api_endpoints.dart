@@ -9,15 +9,12 @@ class ApiEndPoints {
   static String search(String query) => '/search/movie?query=$query';
   static String movieDetails(int movieId) => '/movie/$movieId';
   static String movieReviews(int movieId) => '/movie/$movieId/reviews';
+  static String movieImage(int movieId) => '/movie/$movieId/reviews';
   static String movieCredits({
-    required int seriesId,
-    required int seasonNumber,
-    required int episodeNumber,
+    required int movieId,
   }) =>
-      '/tv/$seriesId/season/$seasonNumber/episode/$episodeNumber/credits';
+      '/movie/$movieId/credits';
 
-  static String movieTrending({
-    required String timeWindow,
-  }) =>
-      '/trending/movie/$timeWindow';
+  static String movieTrending() =>
+      '/trending/movie/day';
 }

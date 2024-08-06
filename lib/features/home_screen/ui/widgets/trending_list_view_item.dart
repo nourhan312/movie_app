@@ -2,11 +2,15 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/features/home_screen/ui/widgets/shimmer_trending_list_view_item.dart';
 import 'package:movie_app/features/home_screen/ui/widgets/trending_number.dart';
 
+import '../../data/models/movie_model.dart';
+
 class TrendingListViewItem extends StatelessWidget {
-  const TrendingListViewItem({super.key, required this.index});
+  const TrendingListViewItem({super.key, required this.index, required this.movie});
   final int index;
+  final Movie movie;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,9 +25,12 @@ class TrendingListViewItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 child: CachedNetworkImage(
                   imageUrl:
-                  "https://th.bing.com/th/id/R.0438cecf7c1e229e771a171015b4617a?rik=g%2fVb%2fHREm9KMiA&pid=ImgRaw&r=0",
-                  height: 220,
-                  fit: BoxFit.cover,
+                  'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+                  height: 260,
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  placeholder: (context, url) =>
+                      ShimmerTrendingListViewItem(index: index,),
                 ),
               ),
             ),

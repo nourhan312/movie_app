@@ -7,21 +7,20 @@ import 'package:movie_app/core/helper/hive_helper.dart';
 import 'package:movie_app/core/helper/login_hive_helper.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/features/login/cubit/login_cubit.dart';
+import 'core/helper/bloc_observer.dart';
 import 'core/networking/dio_helper.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/home_screen/data/models/movie_model.dart';
 import 'package:get/get.dart';
+import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(TokenHelper.TOKEN);
 
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // Set the desired color here
-    statusBarIconBrightness: Brightness.dark, // For light icons
-  ));
+  Bloc.observer = AppBlocObserver();
   await Hive.initFlutter();
   Hive.registerAdapter(MovieAdapter());
   await Hive.openBox<Movie>(HiveHelpers.movieBox);
@@ -33,6 +32,7 @@ void main() async {
   ));
 }
 
+
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
 
@@ -40,22 +40,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent, // Set your desired color here
-      ),
-      child: ScreenUtilInit(
-          designSize: const Size(375, 812),
-          minTextAdapt: true,
-          child: BlocProvider(
-            create: (context) => LoginCubit(),
-            child: GetMaterialApp(
+    return BlocProvider(
+      create: (context) => CategoriesCubit(),
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark, // For light icons
+        ),
+        child: ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            child: MaterialApp(
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
-              initialRoute: Routes.loginScreen,
+              initialRoute: Routes.homeScreen,
               onGenerateRoute: appRouter.generateRoute,
-            ),
-          )),
+            )),
+      ),
     );
   }
 }

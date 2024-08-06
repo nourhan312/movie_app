@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CastTab extends StatelessWidget {
+  const CastTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GridView.count(
@@ -22,8 +24,8 @@ class CastTab extends StatelessWidget {
           radius: 40,
           backgroundImage: AssetImage(imageUrl),
         ),
-        SizedBox(height: 8),
-        Text(name, style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 8),
+        Text(name, style: const TextStyle(fontSize: 16)),
       ],
     );
   }

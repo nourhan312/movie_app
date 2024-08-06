@@ -1,9 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/helper/extentions.dart';
-import 'package:movie_app/features/home_screen/ui/widgets/trending_list_view_item.dart';
+import 'package:movie_app/features/home_screen/logic/categories_cubit/categories_cubit.dart';
+import 'package:movie_app/features/home_screen/logic/trending_movie_cubit/trending_cubit.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_style.dart';
+import 'carousel_slider_section.dart';
 import 'movie_tab.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -37,25 +39,14 @@ class HomeScreenBody extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
-          height: 295,
-          child: CarouselSlider.builder(
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index, int realIndex) {
-              return TrendingListViewItem(index: index);
-            },
-            options: CarouselOptions(
-                height: 295,
-                autoPlay: true,
-                enlargeCenterPage: true,
-                viewportFraction: 0.8,
-                aspectRatio: 16 / 9,
-                initialPage: 0,
-                autoPlayInterval: const Duration(seconds: 2)),
-          ),
-        ),
-        const MovieTabs()
+        BlocProvider(
+            create: (context) => TrendingCubit()..getTrendingMovies(),
+            child: const CarouselSliderSection()),
+        BlocProvider(
+            create: (context) => CategoriesCubit()..getNowPlayingMovies()..getPopularMovies()..getTopRatedMovies()..getUpcomingMovies(),
+            child: const MovieTabs())
       ],
     );
   }
 }
+

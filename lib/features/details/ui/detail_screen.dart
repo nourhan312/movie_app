@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/features/details/widgets/cast_tab.dart';
-import 'package:movie_app/features/details/widgets/fav_icon.dart';
-import 'package:movie_app/features/details/widgets/movie_tab.dart';
-import 'package:movie_app/features/details/widgets/reviwes_tab.dart';
+import 'package:movie_app/features/details/ui/widgets/cast_tab.dart';
+import 'package:movie_app/features/details/ui/widgets/fav_icon.dart';
+import 'package:movie_app/features/details/ui/widgets/movie_tab.dart';
+import 'package:movie_app/features/details/ui/widgets/reviwes_tab.dart';
 import 'package:movie_app/features/search/widgets/image_back.dart';
 
 class DetailScreen extends StatelessWidget {
+  const DetailScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          backgroundColor: Colors.yellow,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            leading: const ImageBack(top: 0),
-            title: const Text('Detail'),
-            centerTitle: true,
-            actions: [FavIcon()],
-
-          ),
-
-          body: Column(children: [
+      length: 3,
+      child: Scaffold(
+        backgroundColor: Colors.yellow,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: const ImageBack(top: 0),
+          title: const Text('Detail'),
+          centerTitle: true,
+          actions: const [FavIcon()],
+        ),
+        body: Column(
+          children: [
             Stack(
               clipBehavior: Clip.none,
               children: [
@@ -73,14 +74,14 @@ class DetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            TabBar(
+            const TabBar(
               tabs: [
                 Tab(text: 'About Movie'),
                 Tab(text: 'Reviews'),
                 Tab(text: 'Cast'),
               ],
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
                   MovieTab(),
@@ -89,7 +90,9 @@ class DetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 }
