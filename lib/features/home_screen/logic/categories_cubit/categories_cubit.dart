@@ -10,12 +10,15 @@ part 'categories_state.dart';
 
 class CategoriesCubit extends Cubit<CategoriesState> {
   CategoriesCubit() : super(CategoriesInitial());
-  //
+  List<Movie> popularMovies = [];
+  List<Movie> upComingMovies = [];
+  List<Movie> topRatedMovies = [];
+  List<Movie> nowPlayingMovies = [];
   void getPopularMovies() async {
     emit(PopularMoviesLoading());
     try {
-      List<Movie> movies = await GetPopularMovies.getPopularMovies();
-      emit(PopularMoviesSuccess(movies));
+      popularMovies = await GetPopularMovies.getPopularMovies();
+      emit(PopularMoviesSuccess());
     } catch (e) {
       emit(PopularMoviesError(e.toString()));
     }
@@ -24,8 +27,8 @@ class CategoriesCubit extends Cubit<CategoriesState> {
   void getTopRatedMovies() async {
     emit(TopRatedMoviesLoading());
     try {
-      List<Movie> movies = await GetTopRated.getTopRatedMovies();
-      emit(TopRatedMoviesSuccess(movies));
+      topRatedMovies = await GetTopRated.getTopRatedMovies();
+      emit(TopRatedMoviesSuccess());
     } catch (e) {
       emit(TopRatedMoviesError(e.toString()));
     }
@@ -34,8 +37,8 @@ class CategoriesCubit extends Cubit<CategoriesState> {
   void getNowPlayingMovies() async {
     emit(NowPlayingMoviesLoading());
     try {
-      List<Movie> movies = await GetNowPlaying.getNowPlayingMovies();
-      emit(NowPlayingMoviesSuccess(movies));
+      nowPlayingMovies = await GetNowPlaying.getNowPlayingMovies();
+      emit(NowPlayingMoviesSuccess());
     } catch (e) {
       emit(NowPlayingMoviesError(e.toString()));
     }
@@ -44,8 +47,8 @@ class CategoriesCubit extends Cubit<CategoriesState> {
   void getUpcomingMovies() async {
     emit(UpcomingMoviesLoading());
     try {
-      List<Movie> movies = await GetUpcoming.getUpcomingMovies();
-      emit(UpcomingMoviesSuccess(movies));
+      upComingMovies = await GetUpcoming.getUpcomingMovies();
+      emit(UpcomingMoviesSuccess());
     } catch (e) {
       emit(UpcomingMoviesError(e.toString()));
     }

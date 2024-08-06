@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/routing/routes.dart';
+import 'package:movie_app/features/details/ui/detail_screen.dart';
 import 'package:movie_app/features/home_screen/ui/home_screen.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_screen.dart';
 import 'package:movie_app/features/search/ui/search.dart';
@@ -31,6 +32,10 @@ class AppRouter {
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (_) =>  const SearchScreen(),
+        );
+      case Routes.detailsScreen:
+        return MaterialPageRoute(
+          builder: (_) =>  const DetailScreen(),
         );
       default:
         return MaterialPageRoute(

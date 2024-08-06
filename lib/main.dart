@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:movie_app/core/helper/hive_helper.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
+import 'core/helper/bloc_observer.dart';
 import 'core/networking/dio_helper.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
@@ -13,10 +14,7 @@ import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // Set the desired color here
-    statusBarIconBrightness: Brightness.dark, // For light icons
-  ));
+  Bloc.observer = AppBlocObserver();
   await Hive.initFlutter();
   Hive.registerAdapter(MovieAdapter());
   await Hive.openBox<Movie>(HiveHelpers.movieBox);
@@ -37,7 +35,8 @@ class MyApp extends StatelessWidget {
       create: (context) => CategoriesCubit(),
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent, // Set your desired color here
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark, // For light icons
         ),
         child: ScreenUtilInit(
             designSize: const Size(375, 812),

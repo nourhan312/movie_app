@@ -15,25 +15,13 @@ class NowPlayingMoviesLoading extends CategoriesState {}
 class UpcomingMoviesLoading extends CategoriesState {}
 
 // Success States
-class PopularMoviesSuccess extends CategoriesState {
-  final List<Movie> movies;
-  PopularMoviesSuccess(this.movies);
-}
+class PopularMoviesSuccess extends CategoriesState {}
 
-class TopRatedMoviesSuccess extends CategoriesState {
-  final List<Movie> movies;
-  TopRatedMoviesSuccess(this.movies);
-}
+class TopRatedMoviesSuccess extends CategoriesState {}
 
-class NowPlayingMoviesSuccess extends CategoriesState {
-  final List<Movie> movies;
-  NowPlayingMoviesSuccess(this.movies);
-}
+class NowPlayingMoviesSuccess extends CategoriesState {}
 
-class UpcomingMoviesSuccess extends CategoriesState {
-  final List<Movie> movies;
-  UpcomingMoviesSuccess(this.movies);
-}
+class UpcomingMoviesSuccess extends CategoriesState {}
 
 // Error States
 class PopularMoviesError extends CategoriesState {

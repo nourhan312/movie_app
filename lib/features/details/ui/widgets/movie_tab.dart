@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MovieTab extends StatelessWidget {
+  const MovieTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Padding(
