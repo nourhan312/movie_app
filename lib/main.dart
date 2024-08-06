@@ -27,7 +27,6 @@ void main() async {
     appRouter: AppRouter(),
   ));
 }
-
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
   const MyApp({super.key, required this.appRouter});
