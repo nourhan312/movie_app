@@ -6,6 +6,12 @@ class TextStyles {
   static TextStyle font24Bold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
+    color: Colors.white
+  );
+  static TextStyle font20Bold = TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeightHelper.regular,
+      color: Colors.black
   );
 
   static TextStyle font32Bold = TextStyle(
@@ -36,6 +42,7 @@ class TextStyles {
   static TextStyle font16SemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.semiBold,
+    color: Colors.white
   );
 
   static TextStyle font13RegularAlt = TextStyle(
@@ -111,22 +118,60 @@ class TextStyles {
   static TextStyle font18SemiBold = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.semiBold,
-  );
+      color: Colors.black
 
+  );
+  static TextStyle font18SemiBoldWhite = TextStyle(
+      fontSize: 18.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: Colors.white
+
+  );
+  static TextStyle font20Regular = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: const Color(0xff6D6D6D),
+  );
+  static TextStyle font20Medium = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: const Color(0xff464646),
+  );
+  static TextStyle font22Regular = TextStyle(
+    fontSize: 19.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: const Color(0xff6D6D6D),
+  );
+  static TextStyle font25Regular = TextStyle(
+    fontSize: 25.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: const Color(0xff6D6D6D),
+  );
+  static TextStyle font27semiBold = TextStyle(
+    fontSize: 27.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.white
+  );
   static TextStyle font48SemiBold = TextStyle(
     fontSize: 48.sp,
-    fontWeight: FontWeightHelper.medium,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.black
   );
   static const textSkip = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w500,
-    color: Color.fromRGBO(0, 0, 0, 0.5), // Use Color.fromRGBO for opacity
+    color: Color.fromRGBO(128, 128, 128, 0.5), // Use Color.fromRGBO for opacity
   );
 
   static const textOnBoarding = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.w500,
     color: Color(0xff6D6D6D),
+  );
+  static TextStyle font27Regular = const TextStyle(
+    fontSize: 27,
+
+    color: Color(0xff464646)
   );
 
 }

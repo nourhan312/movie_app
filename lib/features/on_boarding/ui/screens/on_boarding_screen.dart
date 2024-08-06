@@ -15,7 +15,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow,
+      backgroundColor: Color(0xff1E1E1E),
       body: Stack(
         children: [
           PageView(
@@ -56,10 +56,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               curve: Curves.easeIn);
                         },
                         child: Image.asset("assets/images/icon_back.png",
-                            width: 14, height: 24)),
-                    const SizedBox(width: 20),
-                    Image.asset("assets/images/logo.png",
-                        width: 182, height: 49),
+                            width: 14, height: 24,color:Color.fromRGBO(255, 255, 255, 0.5))),
+
+
                   ],
                 ),
                 InkWell(
@@ -89,7 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 20,
                   width: 20,
                   decoration: BoxDecoration(
-                    color: _currentPage == index ? Colors.black : Colors.white,
+                    color: _currentPage == index ? Color.fromRGBO(255, 255, 255, 0.2) : Colors.white,
                     shape: BoxShape.circle,
                   ),
                 );
