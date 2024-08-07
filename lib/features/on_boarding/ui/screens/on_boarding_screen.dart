@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/theming/text_style.dart';
-import 'package:movie_app/core/widgets/primary_color_widget.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_page.dart';
-
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -24,7 +21,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff1E1E1E),
+      backgroundColor: const Color(0xff242A32),
       body: Stack(
         children: [
           PageView(
@@ -56,27 +53,35 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          _pageController.previousPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeIn);
-                        },
-                        child: Image.asset("assets/images/icon_back.png",
-                            width: 14, height: 24,color:Color.fromRGBO(255, 255, 255, 0.5))),
-
-
-                  ],
+                InkWell(
+                  onTap: () {
+                    _pageController.previousPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
+                  },
+                  child: Image.asset(
+                    "assets/images/icon_back.png",
+                    width: 14,
+                    height: 24,
+                    color: const Color.fromRGBO(255, 255, 255, 0.5),
+                  ),
                 ),
-                OnboardingPage(
-                  image: 'assets/images/on_boarding2.png',
-                  text: 'Enjoy latest shows,movies\n all for free of cost',
-                ),
-                OnboardingPage(
-                  image: 'assets/images/on_boarding3.png',
-                  text: 'Almost ready to go. Enjoy!.',
+                InkWell(
+                  onTap: () {
+                    _pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
+                  },
+                  child: const Text(
+                    'Skip',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -94,34 +99,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 20,
                   width: 20,
                   decoration: BoxDecoration(
-                    color: _currentPage == index ? Color.fromRGBO(255, 255, 255, 0.2) : Colors.white,
+                    color: _currentPage == index
+                        ? const Color.fromRGBO(255, 255, 255, 0.2)
+                        : Colors.white,
                     shape: BoxShape.circle,
                   ),
-                ],
-              ),
+                );
+              }),
             ),
-            Positioned(
-              bottom: 30,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List<Widget>.generate(3, (int index) {
-                  return AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                      color: _currentPage == index ? Colors.black : Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                  );
-                }),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
