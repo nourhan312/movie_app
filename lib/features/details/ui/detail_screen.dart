@@ -135,7 +135,9 @@ class DetailScreen extends StatelessWidget {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          const MovieTab(),
+                          MovieTab(
+                            details: movieDetails,
+                          ),
                           ReviewsTab(
                             review: reviews,
                           ),
