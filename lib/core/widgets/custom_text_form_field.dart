@@ -1,85 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/app_colors.dart';
-import '../theming/text_style.dart';
-
-class AppTextFormField extends StatelessWidget {
-  final EdgeInsetsGeometry? contentPadding;
-  final InputBorder? focusedBorder;
-  final InputBorder? enabledBorder;
-  final TextStyle? inputTextStyle;
-  final TextStyle? hintStyle;
-  final String hintText;
-  final bool? isObscureText;
-  final Widget? suffixIcon;
-  final Color? backgroundColor;
-  final TextEditingController? controller;
-  final Function(String?) validator;
-  const AppTextFormField({
+class CustomTexFormField extends StatefulWidget {
+  const CustomTexFormField({
     super.key,
-    this.contentPadding,
-    this.focusedBorder,
-    this.enabledBorder,
-    this.inputTextStyle,
-    this.hintStyle,
-    required this.hintText,
-    this.isObscureText,
-    this.suffixIcon,
-    this.backgroundColor,
-    this.controller,
-    required this.validator,
+    this.isPassword,
+    required this.hintText, required this.controller, this.suffixIcon, this.inputBorder, this.hintStyle,this.validator
   });
 
+  final String hintText;
+  final bool? isPassword;
+  final TextEditingController controller;
+  final Widget? suffixIcon;
+  final InputBorder? inputBorder;
+  final TextStyle? hintStyle;
+  final String? Function(String?)? validator ;
+
+  @override
+  State<CustomTexFormField> createState() => _CustomTexFormField();
+}
+
+class _CustomTexFormField extends State<CustomTexFormField> {
+  bool isSecure = true;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
+      obscureText: widget.isPassword ?? false ? isSecure : false,
+      controller: widget.controller,
+      cursorColor: Colors.white,
       decoration: InputDecoration(
-        isDense: true,
-        contentPadding: contentPadding ??
-            EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-        focusedBorder: focusedBorder ??
-            OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: ColorsManager.mainBlue,
-                width: 1.3,
-              ),
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-        enabledBorder: enabledBorder ??
-            OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: ColorsManager.lighterGray,
-                width: 1.3,
-              ),
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-        errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        hintStyle: hintStyle ?? TextStyles.font14Medium,
-        hintText: hintText,
-        suffixIcon: suffixIcon,
-        fillColor: backgroundColor ?? ColorsManager.moreLightGray,
-        filled: true,
+        hintText: widget.hintText,
+        border: widget.inputBorder,
+        hintStyle: widget.hintStyle,
+        suffixIcon: widget.suffixIcon ?? (widget.isPassword ?? false
+            ? InkWell(
+            onTap: () {
+              isSecure = !isSecure;
+              setState(() {});
+            },
+            child: Icon(isSecure == true
+                ? Icons.remove_red_eye
+                : Icons.visibility_off_outlined))
+            : null),
       ),
-      obscureText: isObscureText ?? false,
-      style: TextStyles.font14Medium,
-      validator: (value) {
-        return validator(value);
-      },
     );
   }
 }

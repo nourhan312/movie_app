@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/theming/text_style.dart';
+import 'package:movie_app/core/widgets/primary_color_widget.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_page.dart';
 
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
@@ -11,6 +14,12 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,16 +70,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                   ],
                 ),
-                InkWell(
-                  onTap: (){
-                    _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn);
-                  },
-                  child: const Text(
-                    'Skip',
-                    style: TextStyles.textSkip,
-                  ),
+                OnboardingPage(
+                  image: 'assets/images/on_boarding2.png',
+                  text: 'Enjoy latest shows,movies\n all for free of cost',
+                ),
+                OnboardingPage(
+                  image: 'assets/images/on_boarding3.png',
+                  text: 'Almost ready to go. Enjoy!.',
                 ),
               ],
             ),
@@ -91,11 +97,31 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     color: _currentPage == index ? Color.fromRGBO(255, 255, 255, 0.2) : Colors.white,
                     shape: BoxShape.circle,
                   ),
-                );
-              }),
+                ],
+              ),
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 30,
+              left: 0,
+              right: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List<Widget>.generate(3, (int index) {
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      color: _currentPage == index ? Colors.black : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

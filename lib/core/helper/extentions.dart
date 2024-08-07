@@ -30,9 +30,9 @@ extension ListExtension<T> on List<T>? {
 
 
 extension EmailValid on String {
-  bool get isValid => RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(this);
+  bool get emailValid => RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(this);
 }
 
 extension PasswordValid on String {
-  bool get isValid => RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$').hasMatch(this);
+  bool get passwordValid => RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$').hasMatch(this);
 }
