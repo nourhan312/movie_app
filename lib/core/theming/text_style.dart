@@ -168,7 +168,7 @@ class TextStyles {
   static TextStyle font48SemiBold = TextStyle(
     fontSize: 48.sp,
     fontWeight: FontWeightHelper.semiBold,
-    color: Colors.black
+    color: Colors.white
   );
   static const textSkip = TextStyle(
     fontSize: 20,

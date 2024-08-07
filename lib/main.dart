@@ -7,8 +7,8 @@ import 'package:movie_app/core/helper/hive_helper.dart';
 import 'package:movie_app/core/helper/login_hive_helper.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/features/fav/provider/fav_provider.dart';
-import 'package:movie_app/features/search/ui/home_screen_search.dart';
 import 'core/helper/bloc_observer.dart';
+import 'core/networking/auth_api.dart';
 import 'core/networking/dio_helper.dart';
 import 'package:provider/provider.dart';
 import 'core/routing/app_router.dart';
@@ -25,7 +25,7 @@ void main() async {
   Hive.registerAdapter(MovieAdapter());
   await Hive.openBox<Movie>(HiveHelpers.movieBox);
   DioHelper.init();
-
+  AuthApi.init();
   await SearchMovie.searchMoviesByQuery(query: 'Inception');
   runApp(MultiProvider(
     providers: [
@@ -57,8 +57,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
-              // initialRoute: Routes.detailsScreen,
-              home: HomeScreenSearch(),
+              initialRoute: Routes.loginScreen,
               onGenerateRoute: appRouter.generateRoute,
             )),
       ),

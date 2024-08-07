@@ -39,7 +39,7 @@ class _CustomTexFormField extends State<CustomTexFormField> {
             },
             child: Icon(isSecure == true
                 ? Icons.remove_red_eye
-                : Icons.visibility_off_outlined))
+                : Icons.visibility_off_outlined,color: Colors.grey,))
             : null),
       ),
     );
