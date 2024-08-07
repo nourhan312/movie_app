@@ -5,6 +5,7 @@ import 'package:movie_app/features/details/ui/widgets/cast_tab.dart';
 import 'package:movie_app/features/details/ui/widgets/fav_icon.dart';
 import 'package:movie_app/features/details/ui/widgets/movie_tab.dart';
 import 'package:movie_app/features/details/ui/widgets/reviwes_tab.dart';
+import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/theming/text_style.dart';
@@ -13,10 +14,9 @@ import '../logic/details_cubit.dart';
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
     super.key,
-    required this.id,
+    required this.movie,
   });
-  final int id;
-
+  final Movie movie;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -32,7 +32,7 @@ class DetailScreen extends StatelessWidget {
             'Detail Screen',
             style: TextStyles.font23semiBold,
           ),
-          actions: const [FavIcon()],
+          actions: [FavIcon(movie: movie,)],
         ),
         body: BlocBuilder<DetailsCubit, DetailsState>(
           builder: (context, state) {
@@ -41,7 +41,7 @@ class DetailScreen extends StatelessWidget {
                 state is ReviewLoading ||
                 context.read<DetailsCubit>().details == null ||
                 context.read<DetailsCubit>().movieCredits == null ||
-                context.read<DetailsCubit>().reviewList == []) {
+                context.read<DetailsCubit>().reviewList == null ) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is DetailsError) {
               return Center(
@@ -132,7 +132,7 @@ class DetailScreen extends StatelessWidget {
                           details: context.read<DetailsCubit>().details!,
                         ),
                         ReviewsTab(
-                          review: context.read<DetailsCubit>().reviewList,
+                          review: context.read<DetailsCubit>().reviewList!,
                         ),
                         CastTab(
                           credits: context.read<DetailsCubit>().movieCredits,

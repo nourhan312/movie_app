@@ -1,56 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/helper/extentions.dart';
 
+import '../../../../core/theming/text_style.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../logic/sign_up_cubit.dart';
 
-class SignUpTextFormFieldSection extends StatefulWidget {
+class SignUpTextFormFieldSection extends StatelessWidget {
   const SignUpTextFormFieldSection({super.key});
 
   @override
-  State<SignUpTextFormFieldSection> createState() => _SignUpTextFormFieldSectionState();
-}
-
-class _SignUpTextFormFieldSectionState extends State<SignUpTextFormFieldSection> {
-  final nameController = TextEditingController();
-  final phoneNumberController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 20),
-        CustomTexFormField(
-          hintText: "Enter your NAME",
-          controller: nameController,
-        ),
-        const SizedBox(height: 20),
-        CustomTexFormField(
-          hintText: "Enter your Phone Number",
-          controller: phoneNumberController,
-        ),
-        const SizedBox(height: 20),
-        CustomTexFormField(
-          hintText: 'Enter your E-mail',
-          controller: emailController,
-        ),
-        const SizedBox(height: 20),
-        CustomTexFormField(
-          hintText: 'Enter Password',
-          isPassword: true,
-          controller: passwordController,
-        ),
-        const SizedBox(height: 70),
-      ],
+    return Form(
+      key: context.read<SignUpCubit>().formKey,
+      child: Column(
+        children: [
+          const SizedBox(height: 20),
+          CustomTexFormField(
+            hintText: "Enter your NAME",
+            hintStyle: TextStyles.font16Medium,
+            controller: context.read<SignUpCubit>().nameController,
+              validator: (value) {
+                if ( value == null || value.isEmpty ) {
+                  return "please Enter your Name";
+                }
+                return null;
+              }
+          ),
+          const SizedBox(height: 20),
+          CustomTexFormField(
+            hintStyle: TextStyles.font16Medium,
+            hintText: "Enter your Phone Number",
+            controller: context.read<SignUpCubit>().phoneNumberController,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "please Enter your Phone Number";
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 20),
+          CustomTexFormField(
+            hintStyle: TextStyles.font16Medium,
+            hintText: 'Enter your E-mail',
+            controller: context.read<SignUpCubit>().emailController,
+            validator: (value) {
+              if (value == null|| !value.emailValid  || value.isEmpty) {
+                return "please enter a valid Email";
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 20),
+          CustomTexFormField(
+            hintStyle: TextStyles.font16Medium,
+            hintText: 'Enter Password',
+            isPassword: true,
+            controller: context.read<SignUpCubit>().passwordController,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "please enter a valid password";
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 70),
+        ],
+      ),
     );
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    phoneNumberController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
   }
 }

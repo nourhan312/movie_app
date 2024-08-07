@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                     controller: context.read<LoginCubit>().passwordController,
                     isPassword: true,
                     validator: (value) {
-                      if (!value!.passwordValid || value.isEmpty) {
+                      if (value!.isEmpty) {
                         return "please enter a valid password";
                       }
                       return null;

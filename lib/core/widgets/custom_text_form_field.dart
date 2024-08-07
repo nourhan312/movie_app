@@ -24,6 +24,10 @@ class _CustomTexFormField extends State<CustomTexFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
+      style: const TextStyle(
+        color: Colors.white, // Change this to the desired color
+      ),
       obscureText: widget.isPassword ?? false ? isSecure : false,
       controller: widget.controller,
       cursorColor: Colors.white,

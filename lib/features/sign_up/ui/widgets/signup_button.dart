@@ -1,9 +1,10 @@
-
-
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/helper/extentions.dart';
+import 'package:movie_app/features/sign_up/data/models/user_model.dart';
+import 'package:movie_app/features/sign_up/logic/sign_up_cubit.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_style.dart';
 
 class SignUpButton extends StatelessWidget {
@@ -13,17 +14,41 @@ class SignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        onPressed: () {
-          // Handle sign-up button press
+        onPressed: () async {
+          if (context.read<SignUpCubit>().formKey.currentState!.validate()) {
+            User user = User(
+              name: context.read<SignUpCubit>().nameController.text,
+              phone: context.read<SignUpCubit>().phoneNumberController.text,
+              email: context.read<SignUpCubit>().emailController.text,
+              password: context.read<SignUpCubit>().passwordController.text,
+            );
+            await context.read<SignUpCubit>().signUp(user: user);
+          }
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.grey,
           minimumSize: const Size(330, 55),
-          padding:
-          const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
           textStyle: const TextStyle(fontSize: 25),
         ),
-        child:  Text('Sign-Up',style: TextStyles.font24Bold,),
+        child: BlocConsumer<SignUpCubit, SignUpState>(
+          listener: (context,state) {
+            if (state is SignUpSuccess) {
+              context.pushReplacementNamed(Routes.homeScreen);
+            }
+          },
+          builder: (context, state) {
+            if(state is SignUpLoading){
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return Text(
+              'Sign-Up',
+              style: TextStyles.font24Bold.copyWith(color: Colors.black),
+            );
+          },
+        ),
       ),
     );
   }

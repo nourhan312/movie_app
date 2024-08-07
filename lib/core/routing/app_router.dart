@@ -9,6 +9,7 @@ import 'package:movie_app/features/search/ui/home_screen_search.dart';
 
 import 'package:movie_app/features/sign_up/ui/sign_up_screen.dart';
 import '../../features/details/logic/details_cubit.dart';
+import '../../features/home_screen/data/models/movie_model.dart';
 import '../../features/login/ui/login_screen.dart';
 
 class AppRouter {
@@ -38,14 +39,14 @@ class AppRouter {
           builder: (_) => const HomeScreenSearch(),
         );
       case Routes.detailsScreen:
-        if (arguments is int) {
+        if (arguments is Movie) {
           return MaterialPageRoute(
             builder: (_) => BlocProvider(
                 create: (_) => DetailsCubit()
-                  ..movieDetails(id: arguments)
-                  ..getReviews(id: arguments)
-                  ..getMovieCredits(id: arguments),
-                child: DetailScreen(id: arguments)),
+                  ..movieDetails(id: arguments.id)
+                  ..getReviews(id: arguments.id)
+                  ..getMovieCredits(id: arguments.id),
+                child: DetailScreen(movie: arguments,)),
           );
         }
       default:
