@@ -8,14 +8,14 @@ import 'no_result_page.dart';
 class SearchResultsPage extends StatelessWidget {
   final List<Movie> resultmodel;
 
-  SearchResultsPage({required this.resultmodel});
+  const SearchResultsPage({super.key, required this.resultmodel});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.bodyApp,
       body: resultmodel.isEmpty
-          ? Center(
+          ? const Center(
               child: NoResultsPage(),
             )
           : ListView.builder(

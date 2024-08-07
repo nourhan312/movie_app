@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class IdShow extends StatelessWidget {
   final int movieId;
-  const IdShow({required this.movieId});
+  const IdShow({super.key, required this.movieId});
 
   @override
   Widget build(BuildContext context) {
@@ -14,4 +14,5 @@ class IdShow extends StatelessWidget {
         ),
       ),
     );
-  }}
+  }
+}

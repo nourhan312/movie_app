@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/routing/routes.dart';
 import 'package:movie_app/features/details/ui/detail_screen.dart';
 import 'package:movie_app/features/home_screen/ui/home_screen.dart';
@@ -6,6 +7,7 @@ import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_screen.dar
 import 'package:movie_app/features/search/ui/home_screen_search.dart';
 
 import 'package:movie_app/features/sign_up/ui/sign_up_screen.dart';
+import '../../features/details/logic/details_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
 
 class AppRouter {
@@ -33,13 +35,21 @@ class AppRouter {
           builder: (_) => const HomeScreenSearch(),
         );
       case Routes.detailsScreen:
-        return MaterialPageRoute(
-          builder: (_) => const DetailScreen(),
-        );
+        if (arguments is int) {
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                create: (_) => DetailsCubit()
+                  ..movieDetails(id: arguments)
+                  ..getReviews(id: arguments)
+                  ..getMovieCredits(id: arguments),
+                child: DetailScreen(id: arguments)),
+          );
+        }
       default:
         return MaterialPageRoute(
           builder: (_) => const SignUpScreen(),
         );
     }
+    return null;
   }
 }

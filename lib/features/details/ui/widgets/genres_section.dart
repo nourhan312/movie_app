@@ -1,23 +1,28 @@
-
-
 import 'package:flutter/material.dart';
 
 class GenresSection extends StatelessWidget {
   const GenresSection({
     super.key,
+    required this.genres,
   });
+
+  final List genres;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text("Genres:", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+        const Text("Genres:",
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
         const SizedBox(width: 8),
         Flexible(
           child: SizedBox(
             height: 30,
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: genres.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -27,10 +32,10 @@ class GenresSection extends StatelessWidget {
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      "Action",
-                      style: TextStyle(color: Colors.white),
+                      genres[index].name.toString(),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ),

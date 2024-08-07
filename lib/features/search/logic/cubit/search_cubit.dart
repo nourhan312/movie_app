@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
-import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
+
 import 'package:movie_app/features/search/logic/cubit/search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {

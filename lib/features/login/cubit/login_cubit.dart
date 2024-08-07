@@ -1,5 +1,4 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/helper/login_hive_helper.dart';
 import 'package:movie_app/core/networking/dio_helper.dart';
 import 'package:movie_app/features/login/data/models/LoginModel.dart';
@@ -11,11 +10,12 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  LoginModel loginModel =LoginModel();
+  LoginModel loginModel = LoginModel();
 
-  void login({required String email,
-              required String password,}
-      )async {
+  void login({
+    required String email,
+    required String password,
+  }) async {
     emit(LoginLoading());
     try {
       final response = await DioHelper.instance.postData(
@@ -26,13 +26,13 @@ class LoginCubit extends Cubit<LoginState> {
         },
       );
       loginModel = LoginModel.fromJson(response.data);
-      if(loginModel.status == true){
+      if (loginModel.status == true) {
         TokenHelper.saveToken(loginModel.data!.token!);
         emit(LoginSuccess(loginModel.message!));
-      }else{
+      } else {
         emit(LoginError(loginModel.message!));
       }
-    }catch(e){
+    } catch (e) {
       emit(LoginError("An error occurred"));
     }
   }

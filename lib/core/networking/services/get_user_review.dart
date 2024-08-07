@@ -7,16 +7,15 @@ import 'package:movie_app/core/networking/dio_helper.dart';
 import '../../../features/details/data/models/review_model.dart';
 
 class GetUserReview {
- static Future<List<ReviewResult>> getReviews({required id}) async {
+  static Future<List<Review>> getReviews({required int id}) async {
     try {
       final response = await DioHelper.getData(
-          path: ApiEndPoints.movieReviews(
-        id,
-      ));
-      Review review = Review.fromJson(response.data);
-      return review.results!;
+        path: ApiEndPoints.movieReviews(id),
+      );
+      MovieReviewPage reviewPage = MovieReviewPage.fromJson(response.data);
+      return reviewPage.results;
     } on DioException catch (e) {
-      log(e.toString());
+      log('Dio error: ${e.message}');
       return [];
     }
   }

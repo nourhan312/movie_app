@@ -27,10 +27,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          Get.offAll(HomeScreen());
+          Get.offAll(const HomeScreen());
         }
         if (state is LoginError) {
-          Get.snackbar("Error", state.msg,colorText: Colors.white,backgroundColor: Colors.red);
+          Get.snackbar("Error", state.msg,
+              colorText: Colors.white, backgroundColor: Colors.red);
         }
       },
       child: Scaffold(
@@ -61,8 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (!value!.emailValid) {
                               return "please enter a valid email";
                             }
-                          }
-                      ),
+                          }),
                       const SizedBox(
                         height: 10,
                       ),
@@ -98,9 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: const EdgeInsets.all(8.0),
                             child: BlocBuilder<LoginCubit, LoginState>(
                               builder: (context, state) {
-                                if(state is LoginLoading){
-                                  return Center(
-                                      child: CircularProgressIndicator(),
+                                if (state is LoginLoading) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
                                   );
                                 }
                                 return Text("Log-In",

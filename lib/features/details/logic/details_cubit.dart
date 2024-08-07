@@ -12,8 +12,8 @@ part 'details_state.dart';
 class DetailsCubit extends Cubit<DetailsState> {
   DetailsCubit() : super(DetailsInitial());
 
-  List<ReviewResult> reviewList = [];
-  List<MovieDetails> movieDetailsList = [];
+  List<Review> reviewList = [];
+  MovieDetails? details;
   MovieCredits? movieCredits;
   void getReviews({
     required int id,
@@ -32,7 +32,7 @@ class DetailsCubit extends Cubit<DetailsState> {
   }) async {
     emit(DetailsLoading());
     try {
-      movieDetailsList = await GetMovieDetails.getDetails(id: id);
+      details = await GetMovieDetails.getDetails(id: id);
       emit(DetailsSuccess());
     } catch (e) {
       emit(DetailsError(e.toString()));
