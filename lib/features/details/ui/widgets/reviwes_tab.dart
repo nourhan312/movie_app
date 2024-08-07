@@ -13,6 +13,15 @@ class ReviewsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (review.isEmpty) {
+      return Center(
+        child: Text(
+          'No reviews available',
+          style: TextStyles.font18SemiBoldWhite,
+        ),
+      );
+    }
+
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       itemCount: review.length,

@@ -30,6 +30,8 @@ class CastTab extends StatelessWidget {
     return Column(
       children: [
         Container(
+          width: 100,
+          height: 120,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
@@ -41,7 +43,7 @@ class CastTab extends StatelessWidget {
               fit: BoxFit.cover,
               errorWidget: (context, url, error) => Image.network(
                 'https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png',
-                width: 120,
+                width: 100,
                 height: 120,
                 fit: BoxFit.cover,
               ),
@@ -49,7 +51,7 @@ class CastTab extends StatelessWidget {
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,
                 child: Container(
-                  width: 120,
+                  width: 100,
                   height: 120,
                   color: Colors.white,
                 ),

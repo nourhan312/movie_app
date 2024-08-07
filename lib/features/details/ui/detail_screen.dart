@@ -16,7 +16,9 @@ class DetailScreen extends StatelessWidget {
     super.key,
     required this.movie,
   });
+
   final Movie movie;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -25,14 +27,12 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: const Color(0xff242A32),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: const BackButton(
-            color: Colors.white,
-          ),
+          leading: const BackButton(color: Colors.white),
           title: Text(
-            'Detail Screen',
+            ' Movie Details',
             style: TextStyles.font23semiBold,
           ),
-          actions: [FavIcon(movie: movie,)],
+          actions: [FavIcon(movie: movie)],
         ),
         body: BlocBuilder<DetailsCubit, DetailsState>(
           builder: (context, state) {
@@ -41,22 +41,16 @@ class DetailScreen extends StatelessWidget {
                 state is ReviewLoading ||
                 context.read<DetailsCubit>().details == null ||
                 context.read<DetailsCubit>().movieCredits == null ||
-                context.read<DetailsCubit>().reviewList == null ) {
+                context.read<DetailsCubit>().reviewList == null) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is DetailsError) {
-              return Center(
-                child: Text('Error: ${state.message}',
-                    style: const TextStyle(color: Colors.red)),
-              );
-            } else if (state is CreditError) {
-              return Center(
-                child: Text('Error: ${state.message}',
-                    style: const TextStyle(color: Colors.red)),
-              );
-            } else if (state is ReviewError) {
-              return Center(
-                child: Text('Error: ${state.message}',
-                    style: const TextStyle(color: Colors.red)),
+            } else if (state is DetailsError ||
+                state is CreditError ||
+                state is ReviewError) {
+              return const Center(
+                child: Text(
+                  'Error: ',
+                  style: TextStyle(color: Colors.red),
+                ),
               );
             } else {
               return Column(
@@ -67,46 +61,65 @@ class DetailScreen extends StatelessWidget {
                       Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(16),
-                            bottomLeft: Radius.circular(16),
+                            bottomRight: Radius.circular(30),
+                            bottomLeft: Radius.circular(30),
                           ),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16.0),
+                          borderRadius: BorderRadius.circular(30.0),
                           child: CachedNetworkImage(
-                            width: 375,
-                            height: 231,
+                            width: double.infinity,
+                            height: 250,
                             fit: BoxFit.cover,
                             imageUrl:
                                 "https://image.tmdb.org/t/p/w500/${context.read<DetailsCubit>().details?.backdropPath}",
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
                       Positioned(
-                        bottom: -30,
-                        left: 29.0,
+                        bottom: -40,
+                        left: 30.0,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: CachedNetworkImage(
                             imageUrl:
                                 'https://image.tmdb.org/t/p/w500/${context.read<DetailsCubit>().details?.posterPath}',
-                            height: 150,
-                            width: 100,
+                            height: 180,
+                            width: 120,
                             fit: BoxFit.cover,
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  verticalSpace(20),
+                  verticalSpace(30),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        Text(
-                          context.read<DetailsCubit>().details!.title,
-                          style: TextStyles.font18SemiBoldWhite,
+                        Expanded(
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            context.read<DetailsCubit>().details!.title,
+                            style: TextStyles.font24SemiBoldWhite.copyWith(
+                              shadows: [
+                                Shadow(
+                                  blurRadius: 10.0,
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: const Offset(2.0, 2.0),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -114,15 +127,24 @@ class DetailScreen extends StatelessWidget {
                   TabBar(
                     dividerColor: Colors.transparent,
                     labelColor: Colors.white,
-                    indicatorColor: Colors.white,
+                    indicatorColor: Colors.blueAccent,
                     indicatorSize: TabBarIndicatorSize.tab,
                     indicatorPadding:
                         const EdgeInsets.symmetric(horizontal: 10),
-                    unselectedLabelColor: Colors.white.withOpacity(.4),
+                    unselectedLabelColor: Colors.white.withOpacity(0.6),
                     tabs: const [
-                      Tab(text: 'About Movie'),
-                      Tab(text: 'Reviews'),
-                      Tab(text: 'Cast'),
+                      Tab(
+                        icon: Icon(Icons.info_outline),
+                        text: 'About Movie',
+                      ),
+                      Tab(
+                        icon: Icon(Icons.rate_review),
+                        text: 'Reviews',
+                      ),
+                      Tab(
+                        icon: Icon(Icons.people),
+                        text: 'Cast',
+                      ),
                     ],
                   ),
                   Expanded(

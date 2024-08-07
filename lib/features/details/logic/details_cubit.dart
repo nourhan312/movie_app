@@ -51,6 +51,4 @@ class DetailsCubit extends Cubit<DetailsState> {
       emit(CreditError(e.toString()));
     }
   }
-
-
 }
