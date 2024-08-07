@@ -2,21 +2,25 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theming/text_style.dart';
+import '../../data/models/movie_credits.dart';
 
 class CastTab extends StatelessWidget {
-  const CastTab({super.key});
+  const CastTab({super.key, this.credits});
+  final MovieCredits? credits;
 
   @override
   Widget build(BuildContext context) {
+    List cast = credits!.cast!;
     return Padding(
       padding: const EdgeInsets.only(top: 15.0),
       child: GridView.builder(
-        itemCount: 10,
+        itemCount: cast.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.1,
         ),
-        itemBuilder: (context, index) => _buildCastMember("dsdfdsfsd", ""),
+        itemBuilder: (context, index) => _buildCastMember(
+            cast[index].name.toString(), cast[index].profilePath.toString()),
       ),
     );
   }
@@ -25,11 +29,12 @@ class CastTab extends StatelessWidget {
     return Column(
       children: [
         ClipOval(
-            child: CachedNetworkImage(
-                width: 120,
-                height: 120,
-                fit: BoxFit.cover,
-                imageUrl: "https://th.bing.com/th/id/R.f9ac57f813fa30e9f1da619bdfe74e3b?rik=BK9l5FwWIPcoxg&riu=http%3a%2f%2fimages5.fanpop.com%2fimage%2fphotos%2f26900000%2fSpider-Man-spider-man-26910501-1440-900.jpg&ehk=g4ZjdTBtXupdVdblpx5LjFejKu0J71Z2jA5JHWYDrp8%3d&risl=&pid=ImgRaw&r=0")),
+          child: CachedNetworkImage(
+              width: 120,
+              height: 120,
+              fit: BoxFit.cover,
+              imageUrl: 'https://image.tmdb.org/t/p/w500/$imageUrl'),
+        ),
         const SizedBox(height: 8),
         Text(name, style: TextStyles.font20MediumWhite),
       ],

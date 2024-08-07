@@ -48,17 +48,17 @@ class DetailScreen extends StatelessWidget {
               } else if (state is DetailsError) {
                 return Center(
                   child: Text('Error: ${state.message}',
-                      style: TextStyle(color: Colors.red)),
+                      style: const TextStyle(color: Colors.red)),
                 );
               } else if (state is CreditError) {
                 return Center(
                   child: Text('Error: ${state.message}',
-                      style: TextStyle(color: Colors.red)),
+                      style: const TextStyle(color: Colors.red)),
                 );
               } else if (state is ReviewError) {
                 return Center(
                   child: Text('Error: ${state.message}',
-                      style: TextStyle(color: Colors.red)),
+                      style: const TextStyle(color: Colors.red)),
                 );
               } else {
                 final cubit = context.read<DetailsCubit>();
@@ -132,12 +132,16 @@ class DetailScreen extends StatelessWidget {
                         Tab(text: 'Cast'),
                       ],
                     ),
-                    const Expanded(
+                    Expanded(
                       child: TabBarView(
                         children: [
-                          MovieTab(),
-                          ReviewsTab(),
-                          CastTab(),
+                          const MovieTab(),
+                          ReviewsTab(
+                            review: reviews,
+                          ),
+                          CastTab(
+                            credits: credits,
+                          ),
                         ],
                       ),
                     ),
