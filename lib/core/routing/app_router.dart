@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/routing/routes.dart';
 import 'package:movie_app/features/details/ui/detail_screen.dart';
 import 'package:movie_app/features/home_screen/ui/home_screen.dart';
+import 'package:movie_app/features/login/logic/login_cubit.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_screen.dart';
 import 'package:movie_app/features/search/ui/home_screen_search.dart';
 
@@ -24,7 +25,9 @@ class AppRouter {
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => BlocProvider<LoginCubit>(
+              create: (context) => LoginCubit(),
+              child: const LoginScreen()),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(

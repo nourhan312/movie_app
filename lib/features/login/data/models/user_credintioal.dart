@@ -10,7 +10,7 @@ class UserCredentials {
   });
 
   // Convert a UserCredentials instance to a Map
-  Map<String, dynamic> toJson() {
+  static Map<String, dynamic> toJson(String email, String password) {
     return {
       'email': email,
       'password': password,
