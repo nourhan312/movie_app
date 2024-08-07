@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/core/theming/app_colors.dart';
-import 'package:movie_app/features/newSearch/logic/cubit/search_cubit.dart';
-import 'package:movie_app/features/newSearch/ui/search_screen.dart';
+import 'package:movie_app/features/search/ui/search_screen.dart';
 
+import '../logic/cubit/search_cubit.dart';
 
 class HomeScreenSearch extends StatelessWidget {
   const HomeScreenSearch({super.key});

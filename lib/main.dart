@@ -7,6 +7,7 @@ import 'package:movie_app/core/helper/hive_helper.dart';
 import 'package:movie_app/core/helper/login_hive_helper.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/features/fav/provider/fav_provider.dart';
+import 'package:movie_app/features/search/ui/home_screen_search.dart';
 import 'core/helper/bloc_observer.dart';
 import 'core/networking/dio_helper.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,6 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/home_screen/data/models/movie_model.dart';
 import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
-
 
 void main() async {
   await Hive.initFlutter();
@@ -30,7 +30,6 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => FavoritesProvider()),
-
     ],
     child: MyApp(
       appRouter: AppRouter(),
@@ -58,7 +57,8 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
-              initialRoute: Routes.detailsScreen,
+              // initialRoute: Routes.detailsScreen,
+              home: HomeScreenSearch(),
               onGenerateRoute: appRouter.generateRoute,
             )),
       ),

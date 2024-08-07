@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
-import 'package:movie_app/features/newSearch/widgets/id_show.dart';
+
+import 'id_show.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -44,7 +45,7 @@ class MovieCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                      Text(
+                    Text(
                       movie.originalTitle,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -52,7 +53,6 @@ class MovieCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-
                     const SizedBox(height: 8.0),
                     Row(
                       children: [

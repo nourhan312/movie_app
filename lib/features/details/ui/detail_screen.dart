@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helper/spacing.dart';
 import 'package:movie_app/core/theming/text_style.dart';
@@ -17,8 +18,13 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: const Color(0xff242A32),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: const BackButton(color: Colors.white,),
-          title: Text('Detail Screen',style: TextStyles.font23semiBold,),
+          leading: const BackButton(
+            color: Colors.white,
+          ),
+          title: Text(
+            'Detail Screen',
+            style: TextStyles.font23semiBold,
+          ),
           actions: const [FavIcon()],
         ),
         body: Column(
@@ -32,25 +38,35 @@ class DetailScreen extends StatelessWidget {
                         bottomRight: Radius.circular(16),
                         bottomLeft: Radius.circular(16)),
                   ),
-                  child: Image.asset(
-                    'assets/images/back_ground.png',
-                    fit: BoxFit.cover,
-                    width: 375,
-                    height: 211,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: CachedNetworkImage(
+                      width: 375,
+                      height: 231,
+                      fit: BoxFit.cover,
+                      imageUrl:
+                          'https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+                    ),
                   ),
+
+                  // Image.asset(
+                  //   'assets/images/back_ground.png',
+                  //   fit: BoxFit.cover,
+                  //   width: 375,
+                  //   height: 211,
+                  // ),
                 ),
                 Positioned(
                   bottom: -30,
                   left: 29.0,
-                  child: Container(
-                    width: 100,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/back_ground.png'),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          'https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+                      height: 150,
+                      width: 100,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -62,10 +78,8 @@ class DetailScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'Spiderman No Way Home',
-                    style: TextStyles.font18SemiBoldWhite
-                  ),
+                  Text('Spiderman No Way Home',
+                      style: TextStyles.font18SemiBoldWhite),
                 ],
               ),
             ),
