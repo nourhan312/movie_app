@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:movie_app/core/networking/api_endpoints.dart';
 import 'package:movie_app/core/networking/dio_helper.dart';
 
-import '../../../features/home_screen/data/models/details_model.dart';
+import '../../../features/details/data/models/details_model.dart';
 
 
 class GetMovieDetails {

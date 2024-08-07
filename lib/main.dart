@@ -15,7 +15,6 @@ import 'package:provider/provider.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/home_screen/data/models/movie_model.dart';
-import 'package:get/get.dart';
 import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +25,6 @@ import 'package:provider/provider.dart';
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(TokenHelper.TOKEN);
-
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   await Hive.initFlutter();
@@ -64,10 +62,9 @@ class MyApp extends StatelessWidget {
             designSize: const Size(375, 812),
             minTextAdapt: true,
             child: MaterialApp(
-              home: FavoritesScreen(),
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
-              //initialRoute: Routes.homeScreen,
+              initialRoute: Routes.detailsScreen,
               onGenerateRoute: appRouter.generateRoute,
             )),
       ),

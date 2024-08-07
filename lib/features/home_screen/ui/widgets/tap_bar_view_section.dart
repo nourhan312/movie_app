@@ -17,7 +17,10 @@ class TabBarViewSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoriesCubit, CategoriesState>(
       builder: (context, state) {
-        if(state is PopularMoviesLoading || state is UpcomingMoviesLoading || state is TopRatedMoviesLoading || state is NowPlayingMoviesLoading)
+        if(state is PopularMoviesLoading ||
+            state is UpcomingMoviesLoading ||
+            state is TopRatedMoviesLoading ||
+            state is NowPlayingMoviesLoading)
           {
             return Expanded(
               child: TabBarView(

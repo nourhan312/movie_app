@@ -88,6 +88,7 @@ class TextStyles {
   static TextStyle font14Medium = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.medium,
+    color: Colors.grey
   );
 
   static TextStyle font14Bold = TextStyle(
@@ -98,6 +99,8 @@ class TextStyles {
   static TextStyle font16Medium = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.medium,
+      color: Colors.grey
+
   );
 
   static TextStyle font14SemiBold = TextStyle(
@@ -137,8 +140,13 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: const Color(0xff464646),
   );
+  static TextStyle font20MediumWhite = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.white,
+  );
   static TextStyle font22Regular = TextStyle(
-    fontSize: 19.sp,
+    fontSize: 22.sp,
     fontWeight: FontWeightHelper.regular,
     color: const Color(0xff6D6D6D),
   );
@@ -152,6 +160,11 @@ class TextStyles {
     fontWeight: FontWeightHelper.semiBold,
     color: Colors.white
   );
+  static TextStyle font23semiBold = TextStyle(
+      fontSize: 22.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: Colors.white
+  );
   static TextStyle font48SemiBold = TextStyle(
     fontSize: 48.sp,
     fontWeight: FontWeightHelper.semiBold,
@@ -160,7 +173,7 @@ class TextStyles {
   static const textSkip = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w500,
-    color: Color.fromRGBO(0, 0, 0, 0.5), // Use Color.fromRGBO for opacity
+    color: Color.fromRGBO(128, 128, 128, 0.5), // Use Color.fromRGBO for opacity
   );
 
   static const textOnBoarding = TextStyle(
