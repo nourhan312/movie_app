@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/networking/services/search_movie.dart';
 import 'package:movie_app/core/theming/app_colors.dart';
-import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
-import 'package:movie_app/features/newSearch/logic/cubit/search_cubit.dart';
-import 'package:movie_app/features/newSearch/logic/cubit/search_state.dart';
-import 'package:movie_app/features/newSearch/ui/no_result_page.dart';
-import 'package:movie_app/features/newSearch/ui/search_page_result.dart';
-import 'package:movie_app/features/newSearch/widgets/custome_text_field.dart';
-import 'package:movie_app/features/newSearch/widgets/states_check.dart';
+
+import '../logic/cubit/search_cubit.dart';
+import '../widgets/custome_text_field.dart';
+import '../widgets/states_check.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
@@ -16,7 +13,7 @@ class SearchScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchCubit(SearchMovie()),
       child: Scaffold(
-        backgroundColor:  ColorsManager.bodyApp,
+        backgroundColor: ColorsManager.bodyApp,
         appBar: AppBar(
           backgroundColor: ColorsManager.bodyApp,
           title: const Text(
@@ -41,7 +38,7 @@ class SearchScreen extends StatelessWidget {
         body: const Column(
           children: [
             CustomTextFormField(),
-            StatesCheck()
+            StatesCheck(),
           ],
         ),
       ),

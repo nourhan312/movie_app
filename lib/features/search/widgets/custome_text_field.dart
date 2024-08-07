@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/features/newSearch/logic/cubit/search_cubit.dart';
+
+import '../logic/cubit/search_cubit.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({super.key});
