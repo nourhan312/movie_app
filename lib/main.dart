@@ -15,6 +15,7 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/home_screen/data/models/movie_model.dart';
 import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
+import 'features/home_screen/ui/home_screen.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
               // initialRoute: Routes.detailsScreen,
-              home: HomeScreenSearch(),
+              home: const HomeScreen(),
               onGenerateRoute: appRouter.generateRoute,
             )),
       ),

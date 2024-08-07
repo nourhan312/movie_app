@@ -33,9 +33,11 @@ class AppRouter {
           builder: (_) => const HomeScreenSearch(),
         );
       case Routes.detailsScreen:
-        return MaterialPageRoute(
-          builder: (_) => const DetailScreen(),
-        );
+        if (arguments is int) {
+          return MaterialPageRoute(
+            builder: (_) => DetailScreen(id: arguments),
+          );
+        }
       default:
         return MaterialPageRoute(
           builder: (_) => const SignUpScreen(),
