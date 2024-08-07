@@ -8,6 +8,8 @@ import '../widgets/custome_text_field.dart';
 import '../widgets/states_check.dart';
 
 class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

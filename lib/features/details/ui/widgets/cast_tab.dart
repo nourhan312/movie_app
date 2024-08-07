@@ -36,7 +36,11 @@ class CastTab extends StatelessWidget {
               imageUrl: 'https://image.tmdb.org/t/p/w500/$imageUrl'),
         ),
         const SizedBox(height: 8),
-        Text(name, style: TextStyles.font20MediumWhite),
+        Text(
+          name,
+          style: TextStyles.font20MediumWhite,
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }

@@ -16,7 +16,7 @@ class HomeScreenSearch extends StatelessWidget {
       body: SafeArea(
         child: BlocProvider(
           create: (context) => SearchCubit(SearchMovie()),
-          child: SearchScreen(),
+          child: const SearchScreen(),
         ),
       ),
     );

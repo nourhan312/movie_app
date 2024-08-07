@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:movie_app/core/helper/spacing.dart';
-import 'package:movie_app/features/details/logic/details_cubit.dart';
 import '../../../../core/theming/text_style.dart';
 import '../../data/models/details_model.dart';
 import 'genres_section.dart';

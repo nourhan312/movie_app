@@ -23,7 +23,7 @@ class StatesCheck extends StatelessWidget {
                 child: Text(state.message,
                     style: const TextStyle(color: Colors.white)));
           } else {
-            return NoResultsPage();
+            return const NoResultsPage();
           }
         },
       ),

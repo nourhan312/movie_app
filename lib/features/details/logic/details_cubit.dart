@@ -12,7 +12,7 @@ part 'details_state.dart';
 class DetailsCubit extends Cubit<DetailsState> {
   DetailsCubit() : super(DetailsInitial());
 
-  List<ReviewResult> reviewList = [];
+  List<Review> reviewList = [];
   MovieDetails? details;
   MovieCredits? movieCredits;
   void getReviews({

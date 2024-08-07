@@ -1,14 +1,13 @@
-import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
-class TokenHelper{
+class TokenHelper {
   static const String TOKEN = "token";
 
-  static void saveToken(String token )async{
-    await Hive.box(TOKEN).put(TOKEN,token);
+  static void saveToken(String token) async {
+    await Hive.box(TOKEN).put(TOKEN, token);
   }
 
-  static String? getToken(){
+  static String? getToken() {
     return Hive.box(TOKEN).get(TOKEN);
   }
 }

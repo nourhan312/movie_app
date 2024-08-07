@@ -1,106 +1,82 @@
+class MovieReviewPage {
+  final int id;
+  final int page;
+  final List<Review> results;
+  final int totalPages;
+  final int totalResults;
 
-class Review {
-  int? id;
-  int? page;
-  List<ReviewResult>? results;
-  int? totalPages;
-  int? totalResults;
+  MovieReviewPage({
+    required this.id,
+    required this.page,
+    required this.results,
+    required this.totalPages,
+    required this.totalResults,
+  });
 
-  Review(
-      {this.id, this.page, this.results, this.totalPages, this.totalResults});
-
-  Review.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    page = json['page'];
-    if (json['results'] != null) {
-      results = <ReviewResult>[];
-      json['results'].forEach((v) {
-        results!.add(ReviewResult.fromJson(v));
-      });
-    }
-    totalPages = json['total_pages'];
-    totalResults = json['total_results'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['page'] = page;
-    if (results != null) {
-      data['results'] = results!.map((v) => v.toJson()).toList();
-    }
-    data['total_pages'] = totalPages;
-    data['total_results'] = totalResults;
-    return data;
+  factory MovieReviewPage.fromJson(Map<String, dynamic> json) {
+    return MovieReviewPage(
+      id: json['id'],
+      page: json['page'],
+      results:
+          List<Review>.from(json['results'].map((x) => Review.fromJson(x))),
+      totalPages: json['total_pages'],
+      totalResults: json['total_results'],
+    );
   }
 }
 
-class ReviewResult {
-  String? author;
-  AuthorDetails? authorDetails;
-  String? content;
-  String? createdAt;
-  String? id;
-  String? updatedAt;
-  String? url;
+class Review {
+  final String author;
+  final AuthorDetails authorDetails;
+  final String content;
+  final DateTime createdAt;
+  final String id;
+  final DateTime updatedAt;
+  final String url;
 
-  ReviewResult(
-      {this.author,
-        this.authorDetails,
-        this.content,
-        this.createdAt,
-        this.id,
-        this.updatedAt,
-        this.url});
+  Review({
+    required this.author,
+    required this.authorDetails,
+    required this.content,
+    required this.createdAt,
+    required this.id,
+    required this.updatedAt,
+    required this.url,
+  });
 
-  ReviewResult.fromJson(Map<String, dynamic> json) {
-    author = json['author'];
-    authorDetails = json['author_details'] != null
-        ? AuthorDetails.fromJson(json['author_details'])
-        : null;
-    content = json['content'];
-    createdAt = json['created_at'];
-    id = json['id'];
-    updatedAt = json['updated_at'];
-    url = json['url'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['author'] = author;
-    if (authorDetails != null) {
-      data['author_details'] = authorDetails!.toJson();
-    }
-    data['content'] = content;
-    data['created_at'] = createdAt;
-    data['id'] = id;
-    data['updated_at'] = updatedAt;
-    data['url'] = url;
-    return data;
+  factory Review.fromJson(Map<String, dynamic> json) {
+    return Review(
+      author: json['author'],
+      authorDetails: AuthorDetails.fromJson(json['author_details']),
+      content: json['content'],
+      createdAt: DateTime.parse(json['created_at']),
+      id: json['id'],
+      updatedAt: DateTime.parse(json['updated_at']),
+      url: json['url'],
+    );
   }
 }
 
 class AuthorDetails {
-  String? name;
-  String? username;
-  String? avatarPath;
-  int? rating;
+  final String name;
+  final String username;
+  final String? avatarPath;
 
-  AuthorDetails({this.name, this.username, this.avatarPath, this.rating});
+  final double? rating;
 
-  AuthorDetails.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    username = json['username'];
-    avatarPath = json['avatar_path'];
-    rating = json['rating'];
-  }
+  AuthorDetails({
+    required this.name,
+    required this.username,
+    this.avatarPath,
+    this.rating,
+  });
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['name'] = name;
-    data['username'] = username;
-    data['avatar_path'] = avatarPath;
-    data['rating'] = rating;
-    return data;
+  factory AuthorDetails.fromJson(Map<String, dynamic> json) {
+    return AuthorDetails(
+      name: json['name'],
+      username: json['username'],
+      avatarPath: json['avatar_path'],
+      rating: json['rating']?.toDouble(),
+    );
   }
 }
