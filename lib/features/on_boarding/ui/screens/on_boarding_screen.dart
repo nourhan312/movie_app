@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/helper/extentions.dart';
+import 'package:movie_app/core/routing/routes.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -69,10 +71,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 InkWell(
                   onTap: () {
-                    _pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    );
+
+                    if(_currentPage == 2)
+                      {
+                        context.pushNamed(Routes.loginScreen);
+                      }else{
+                      _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeIn,
+                      );
+                    }
                   },
                   child: const Text(
                     'Skip',

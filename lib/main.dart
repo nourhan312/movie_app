@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
-              initialRoute: Routes.onBoardingScreen,
+              initialRoute: Routes.detailsScreen,
               onGenerateRoute: appRouter.generateRoute,
             )),
       ),
