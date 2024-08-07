@@ -15,7 +15,7 @@ class TrendingListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.pushNamed(Routes.detailsScreen, arguments: movie.id),
+      onTap: () => context.pushNamed(Routes.detailsScreen, arguments: movie),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
         child: SizedBox(

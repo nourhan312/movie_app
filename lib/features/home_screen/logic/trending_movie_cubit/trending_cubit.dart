@@ -21,6 +21,4 @@ class TrendingCubit extends Cubit<TrendingState> {
       emit(TrendingMoviesError(e.toString()));
     }
   }
-
-
 }

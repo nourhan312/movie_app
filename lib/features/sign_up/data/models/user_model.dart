@@ -18,13 +18,13 @@ class User {
   });
 
   // Convert a User instance to a Map
-  Map<String, dynamic> toJson() {
+  static Map<String, dynamic> toJson(User user) {
     return {
-      'name': name,
-      'phone': phone,
-      'email': email,
-      'password': password,
-      'image': image,
+      'name': user.name,
+      'phone': user.phone,
+      'email': user.email,
+      'password': user.password,
+      'image': '',
     };
   }
 
