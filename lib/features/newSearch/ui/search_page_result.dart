@@ -14,20 +14,20 @@ class SearchResultsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsManager.bodyApp,
       body: resultmodel.isEmpty
-          ?  Center(
-        child: NoResultsPage(),
-      )
+          ? Center(
+              child: NoResultsPage(),
+            )
           : ListView.builder(
-        itemCount: resultmodel.length,
-        itemBuilder: (context, index) {
-          final movie = resultmodel[index];
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: MovieCard(movie: movie,)
-          );
-        },
-      ),
+              itemCount: resultmodel.length,
+              itemBuilder: (context, index) {
+                final movie = resultmodel[index];
+                return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: MovieCard(
+                      movie: movie,
+                    ));
+              },
+            ),
     );
   }
 }
-

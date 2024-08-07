@@ -30,7 +30,6 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => FavoritesProvider()),
-
     ],
     child: MyApp(
       appRouter: AppRouter(),
