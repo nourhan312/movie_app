@@ -1,5 +1,3 @@
-
-
 class VideoLauncherModel {
   int? id;
   List<Results>? results;
@@ -24,6 +22,13 @@ class VideoLauncherModel {
     }
     return data;
   }
+
+  List<Results> getTrailerResults() {
+    if (results == null) {
+      return [];
+    }
+    return results!.where((result) => result.type == "Trailer").toList();
+  }
 }
 
 class Results {
@@ -38,17 +43,18 @@ class Results {
   String? publishedAt;
   String? id;
 
-  Results(
-      {this.iso6391,
-        this.iso31661,
-        this.name,
-        this.key,
-        this.site,
-        this.size,
-        this.type,
-        this.official,
-        this.publishedAt,
-        this.id});
+  Results({
+    this.iso6391,
+    this.iso31661,
+    this.name,
+    this.key,
+    this.site,
+    this.size,
+    this.type,
+    this.official,
+    this.publishedAt,
+    this.id
+  });
 
   Results.fromJson(Map<String, dynamic> json) {
     iso6391 = json['iso_639_1'];

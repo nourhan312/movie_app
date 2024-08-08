@@ -6,18 +6,18 @@ import '../api_endpoints.dart';
 import '../dio_helper.dart';
 
 class GetVideo {
-  static getVideo({required int id}) async {
+  static Future<List<Results>?> getVideo({required int id}) async {
     try {
-      final response =
-          await DioHelper.getData(path: ApiEndPoints.movieVideo(id));
-      VideoLauncherModel videoLauncherModel =
-          VideoLauncherModel.fromJson(response.data);
+      final response = await DioHelper.getData(path: ApiEndPoints.movieVideo(id));
+      VideoLauncherModel videoLauncherModel = VideoLauncherModel.fromJson(response.data);
 
-      return videoLauncherModel.results;
+      // Return only the trailer results
+      return videoLauncherModel.getTrailerResults();
     } on DioException catch (e) {
       if (kDebugMode) {
         print(e.toString());
       }
+      return null;
     }
   }
 }
