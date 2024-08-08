@@ -30,3 +30,12 @@ final class CreditError extends DetailsState {
   final String message;
   CreditError(this.message);
 }
+
+final class VideoLuncherLoading extends DetailsState {}
+
+final class VideoLuncherError extends DetailsState {
+  final String message;
+  VideoLuncherError(this.message);
+}
+
+final class VideoLuncherSuccess extends DetailsState {}

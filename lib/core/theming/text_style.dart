@@ -4,14 +4,15 @@ import 'font_weight_helper.dart';
 
 class TextStyles {
   static TextStyle font24Bold = TextStyle(
-    fontSize: 24.sp,
-    fontWeight: FontWeightHelper.bold,
-    color: Colors.white
-  );
+      fontSize: 24.sp, fontWeight: FontWeightHelper.bold, color: Colors.white);
   static TextStyle font20Bold = TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeightHelper.regular,
-      color: Colors.black
+      color: Colors.black);
+  static const TextStyle font24SemiBoldWhite = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
   );
 
   static TextStyle font32Bold = TextStyle(
@@ -40,10 +41,9 @@ class TextStyles {
   );
 
   static TextStyle font16SemiBold = TextStyle(
-    fontSize: 16.sp,
-    fontWeight: FontWeightHelper.semiBold,
-    color: Colors.white
-  );
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: Colors.white);
 
   static TextStyle font13RegularAlt = TextStyle(
     fontSize: 13.sp,
@@ -86,10 +86,7 @@ class TextStyles {
   );
 
   static TextStyle font14Medium = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeightHelper.medium,
-    color: Colors.grey
-  );
+      fontSize: 14.sp, fontWeight: FontWeightHelper.medium, color: Colors.grey);
 
   static TextStyle font14Bold = TextStyle(
     fontSize: 14.sp,
@@ -97,11 +94,7 @@ class TextStyles {
   );
 
   static TextStyle font16Medium = TextStyle(
-    fontSize: 16.sp,
-    fontWeight: FontWeightHelper.medium,
-      color: Colors.grey
-
-  );
+      fontSize: 16.sp, fontWeight: FontWeightHelper.medium, color: Colors.grey);
 
   static TextStyle font14SemiBold = TextStyle(
     fontSize: 14.sp,
@@ -119,17 +112,13 @@ class TextStyles {
   );
 
   static TextStyle font18SemiBold = TextStyle(
-    fontSize: 18.sp,
-    fontWeight: FontWeightHelper.semiBold,
-      color: Colors.black
-
-  );
+      fontSize: 18.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: Colors.black);
   static TextStyle font18SemiBoldWhite = TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.semiBold,
-      color: Colors.white
-
-  );
+      color: Colors.white);
   static TextStyle font20Regular = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.regular,
@@ -156,20 +145,17 @@ class TextStyles {
     color: const Color(0xff6D6D6D),
   );
   static TextStyle font27semiBold = TextStyle(
-    fontSize: 27.sp,
-    fontWeight: FontWeightHelper.semiBold,
-    color: Colors.white
-  );
+      fontSize: 27.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: Colors.white);
   static TextStyle font23semiBold = TextStyle(
       fontSize: 22.sp,
       fontWeight: FontWeightHelper.semiBold,
-      color: Colors.white
-  );
+      color: Colors.white);
   static TextStyle font48SemiBold = TextStyle(
-    fontSize: 48.sp,
-    fontWeight: FontWeightHelper.semiBold,
-    color: Colors.white
-  );
+      fontSize: 48.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: Colors.white);
   static const textSkip = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w500,
@@ -181,10 +167,6 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: Color(0xff6D6D6D),
   );
-  static TextStyle font27Regular = const TextStyle(
-    fontSize: 27,
-
-    color: Color(0xff464646)
-  );
-
+  static TextStyle font27Regular =
+      const TextStyle(fontSize: 27, color: Color(0xff464646));
 }

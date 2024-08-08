@@ -10,40 +10,68 @@ class GenresSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Text("Genres:",
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            "Genres:",
             style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white)),
-        const SizedBox(width: 8),
-        Flexible(
-          child: SizedBox(
-            height: 30,
-            child: ListView.builder(
-              itemCount: genres.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Text(
-                      genres[index].name.toString(),
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                  ),
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Flexible(
+            child: SizedBox(
+              height: 40,
+              child: ListView.builder(
+                itemCount: genres.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                  child: _buildGenreChip(genres[index].name.toString()),
                 ),
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGenreChip(String genreName) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [
+            Colors.blueAccent,
+            Colors.lightBlueAccent,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-      ],
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 6,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          genreName,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }

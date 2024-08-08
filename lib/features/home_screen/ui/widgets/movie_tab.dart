@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helper/spacing.dart';
+import 'package:movie_app/core/theming/app_colors.dart';
 import 'package:movie_app/features/home_screen/ui/widgets/tap_bar_view_section.dart';
 
 class MovieTabs extends StatefulWidget {
@@ -9,7 +10,8 @@ class MovieTabs extends StatefulWidget {
   _MovieTabsState createState() => _MovieTabsState();
 }
 
-class _MovieTabsState extends State<MovieTabs> with SingleTickerProviderStateMixin {
+class _MovieTabsState extends State<MovieTabs>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -32,8 +34,8 @@ class _MovieTabsState extends State<MovieTabs> with SingleTickerProviderStateMix
           TabBar(
             dividerColor: Colors.transparent,
             labelColor: Colors.white,
-            indicatorColor: Colors.white,
-            indicatorSize: TabBarIndicatorSize.tab,
+            indicatorColor: ColorsManager.mainBlue,
+            indicatorSize: TabBarIndicatorSize.label,
             indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
             unselectedLabelColor: Colors.white.withOpacity(.4),
             controller: _tabController,
@@ -51,4 +53,3 @@ class _MovieTabsState extends State<MovieTabs> with SingleTickerProviderStateMix
     );
   }
 }
-
