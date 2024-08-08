@@ -4,6 +4,7 @@ import 'package:movie_app/core/helper/extentions.dart';
 import 'package:movie_app/features/sign_up/data/models/user_model.dart';
 import 'package:movie_app/features/sign_up/logic/sign_up_cubit.dart';
 
+import '../../../../core/helper/hive_helper.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_style.dart';
 
@@ -34,6 +35,7 @@ class SignUpButton extends StatelessWidget {
         child: BlocConsumer<SignUpCubit, SignUpState>(
           listener: (context,state) {
             if (state is SignUpSuccess) {
+              HiveHelpers.myBox!.put("notShowAuthScreen", "true");
               context.pushReplacementNamed(Routes.homeScreen);
             }
           },

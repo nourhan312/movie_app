@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/helper/extentions.dart';
+import 'package:movie_app/core/routing/routes.dart';
 import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
 
-import 'id_show.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -9,14 +11,9 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => IdShow(movieId: movie.id),
-          ),
-        );
+       context.pushNamed(Routes.detailsScreen,arguments: movie);
       },
       child: Card(
         color: Colors.transparent,
@@ -31,8 +28,10 @@ class MovieCard extends StatelessWidget {
                 topLeft: Radius.circular(16.0),
                 topRight: Radius.circular(16.0),
               ),
-              child: Image.network(
-                'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+              child: CachedNetworkImage(
+                imageUrl: movie.posterPath == ''
+                    ? "https://www.canadasatellite.ca/media/catalog/product/cache/728617c6636d90bea9d31e9e0817f96b/i/m/image-not-available_1_11_1_1_1.png"
+                    : 'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
                 fit: BoxFit.cover,
                 height: 200.0,
                 width: double.infinity,

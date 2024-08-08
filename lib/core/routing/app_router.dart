@@ -6,9 +6,9 @@ import 'package:movie_app/features/home_screen/ui/home_screen.dart';
 import 'package:movie_app/features/login/logic/login_cubit.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_screen.dart';
 import 'package:movie_app/features/search/ui/home_screen_search.dart';
-
 import 'package:movie_app/features/sign_up/ui/sign_up_screen.dart';
 import '../../features/details/logic/details_cubit.dart';
+import '../../features/fav/ui/fav_screen.dart';
 import '../../features/home_screen/data/models/movie_model.dart';
 import '../../features/login/ui/login_screen.dart';
 
@@ -33,6 +33,10 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );
+      case Routes.favScreen:
+        return MaterialPageRoute(
+          builder: (_) => const FavoritesScreen(),
         );
       case Routes.searchScreen:
         return MaterialPageRoute(

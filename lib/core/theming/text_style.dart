@@ -179,7 +179,7 @@ class TextStyles {
   static const textOnBoarding = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.w500,
-    color: Color(0xff6D6D6D),
+    color: Colors.white,
   );
   static TextStyle font27Regular = const TextStyle(
     fontSize: 27,

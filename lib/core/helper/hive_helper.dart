@@ -10,21 +10,20 @@ class HiveHelpers {
     await Hive.initFlutter();
     Hive.registerAdapter(MovieAdapter());
     await Hive.openBox<Movie>(movieBox);
+    myBox = await openHiveBox("AuthBox");
+
   }
 
   static Box<Movie> get box => Hive.box<Movie>(movieBox);
 
-  // Add a movie
   static Future<void> addMovie(Movie movie) async {
     await box.add(movie);
   }
 
-  // Get all movies
   static List<Movie> getMovies() {
     return box.values.toList();
   }
 
-  // Remove a movie by id
   static Future<void> removeMovie(int movieId) async {
     final movie = box.values.firstWhere((element) => element.id == movieId);
     await movie.delete();
@@ -37,14 +36,12 @@ class HiveHelpers {
 
   static Future<Box> openHiveBox(String boxName) async
   {
-//كدا انا بقوله لو هو مفتوح خد ال path وروح اعمله init
     if(!Hive.isBoxOpen(boxName))
     {
       Hive.init((await getApplicationDocumentsDirectory()).path);
     }
     //لو لا يبقي روح افتحه
     return await Hive.openBox(boxName);
-
   }
 
 }

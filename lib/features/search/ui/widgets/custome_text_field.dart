@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/features/search/logic/cubit/search_state.dart';
 
-import '../logic/cubit/search_cubit.dart';
+import '../../logic/cubit/search_cubit.dart';
+
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({super.key});
@@ -10,8 +12,8 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Builder(
-        builder: (context) {
+      child: BlocBuilder<SearchCubit,SearchState>(
+        builder: (context,state) {
           return TextFormField(
             onChanged: (query) {
               context.read<SearchCubit>().searchMovies(query);
