@@ -27,8 +27,7 @@ class AppRouter {
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<LoginCubit>(
-              create: (context) => LoginCubit(),
-              child: const LoginScreen()),
+              create: (context) => LoginCubit(), child: const LoginScreen()),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
@@ -45,8 +44,11 @@ class AppRouter {
                 create: (_) => DetailsCubit()
                   ..movieDetails(id: arguments.id)
                   ..getReviews(id: arguments.id)
-                  ..getMovieCredits(id: arguments.id),
-                child: DetailScreen(movie: arguments,)),
+                  ..getMovieCredits(id: arguments.id)
+                  ..getVideo(id: arguments.id),
+                child: DetailScreen(
+                  movie: arguments,
+                )),
           );
         }
       default:

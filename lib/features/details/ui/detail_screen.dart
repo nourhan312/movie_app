@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/features/details/logic/url_lunsher_helper/url_luncher.dart';
 import 'package:movie_app/features/details/ui/widgets/cast_tab.dart';
 import 'package:movie_app/features/details/ui/widgets/fav_icon.dart';
 import 'package:movie_app/features/details/ui/widgets/movie_tab.dart';
@@ -39,13 +40,16 @@ class DetailScreen extends StatelessWidget {
             if (state is DetailsLoading ||
                 state is CreditLoading ||
                 state is ReviewLoading ||
+                state is VideoLuncherLoading ||
                 context.read<DetailsCubit>().details == null ||
                 context.read<DetailsCubit>().movieCredits == null ||
-                context.read<DetailsCubit>().reviewList == null) {
+                context.read<DetailsCubit>().reviewList == null ||
+                context.read<DetailsCubit>().videoList == null) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is DetailsError ||
                 state is CreditError ||
-                state is ReviewError) {
+                state is ReviewError ||
+                state is VideoLuncherError) {
               return const Center(
                 child: Text(
                   'Error: ',
@@ -65,19 +69,57 @@ class DetailScreen extends StatelessWidget {
                             bottomLeft: Radius.circular(30),
                           ),
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30.0),
-                          child: CachedNetworkImage(
-                            width: double.infinity,
-                            height: 250,
-                            fit: BoxFit.cover,
-                            imageUrl:
-                                "https://image.tmdb.org/t/p/w500/${context.read<DetailsCubit>().details?.backdropPath}",
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          ),
+                        child: Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(30.0),
+                              child: CachedNetworkImage(
+                                width: double.infinity,
+                                height: 250,
+                                fit: BoxFit.cover,
+                                imageUrl:
+                                    "https://image.tmdb.org/t/p/w500/${context.read<DetailsCubit>().details?.backdropPath}",
+                                placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator()),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
+                            ),
+                            Container(
+                              height: 250,
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.transparent,
+                                    Colors.black,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
+                              child: Center(
+                                child: IconButton(
+                                  onPressed: () {
+                                    launchURL(context
+                                        .read<DetailsCubit>()
+                                        .videoList![0]
+                                        .key!);
+                                  },
+                                  icon: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                    child: const Icon(
+                                      Icons.play_arrow,
+                                      color: Colors.white,
+                                      size: 60,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       Positioned(
