@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../logic/cubit/search_cubit.dart';
-import '../logic/cubit/search_state.dart';
-import '../ui/no_result_page.dart';
-import '../ui/search_page_result.dart';
+import '../../logic/cubit/search_cubit.dart';
+import '../../logic/cubit/search_state.dart';
+import '../no_result_page.dart';
+import '../search_page_result.dart';
+
 
 class StatesCheck extends StatelessWidget {
   const StatesCheck({super.key});

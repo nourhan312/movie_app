@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/core/helper/extentions.dart';
 
+import '../../../../core/helper/hive_helper.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_style.dart';
 import '../../logic/login_cubit.dart';
@@ -37,6 +38,7 @@ class LoginButton extends StatelessWidget {
           child: BlocConsumer<LoginCubit, LoginState>(
             listener: (context,state) {
               if (state is LoginSuccess) {
+                HiveHelpers.myBox!.put("notShowAuthScreen", "true");
                 context.pushReplacementNamed(Routes.homeScreen);
               }
               if (state is LoginError) {

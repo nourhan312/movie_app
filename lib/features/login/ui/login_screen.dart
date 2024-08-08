@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/helper/extentions.dart';
-import 'package:movie_app/core/routing/routes.dart';
+import 'package:movie_app/core/helper/spacing.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/features/login/logic/login_cubit.dart';
 import 'package:movie_app/features/login/ui/widgets/login_button.dart';
 import '../../../core/theming/app_colors.dart';
 import '../../../core/theming/text_style.dart';
+import '../../sign_up/ui/widgets/dont_have_acount.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -64,29 +65,8 @@ class LoginScreen extends StatelessWidget {
                     height: 50,
                   ),
                   const LoginButton(),
-                  const SizedBox(
-                    height: 70,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "Don't have Account?",
-                        style: TextStyles.font18SemiBoldWhite,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.pushReplacementNamed(Routes.signUpScreen);
-                        },
-                        child: Text(
-                          "Sign-Up Now",
-                          style: TextStyles.font18SemiBoldWhite,
-                        ),
-                      )
-                    ],
-                  )
+                  verticalSpace(70,),
+                  const DontHaveAccount()
                 ],
               ),
             ),
@@ -96,4 +76,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-

@@ -13,6 +13,15 @@ class HomeScreenSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.bodyApp,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          'Search',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        leading: const BackButton(color: Colors.white,),
+      ),
       body: SafeArea(
         child: BlocProvider(
           create: (context) => SearchCubit(SearchMovie()),

@@ -24,12 +24,12 @@ class MovieCategory extends StatelessWidget {
       itemCount: movies.length,
       itemBuilder: (context, index) {
         final movie = movies[index];
-        return buildGridViewItem(movie,context);
+        return buildGridViewItem(movie, context);
       },
     );
   }
 
-  InkWell buildGridViewItem(Movie movie,BuildContext context) {
+  InkWell buildGridViewItem(Movie movie, BuildContext context) {
     return InkWell(
       onTap: () => context.pushNamed(Routes.detailsScreen, arguments: movie),
       child: Column(
@@ -40,7 +40,7 @@ class MovieCategory extends StatelessWidget {
               imageUrl: "https://image.tmdb.org/t/p/w500/${movie.posterPath}",
               fit: BoxFit.cover,
               height: 160,
-              placeholder: (context, url) =>  Shimmer.fromColors(
+              placeholder: (context, url) => Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,
                 child: Container(
@@ -53,7 +53,7 @@ class MovieCategory extends StatelessWidget {
           const SizedBox(height: 8.0),
           Text(
             movie.originalTitle,
-            overflow:TextOverflow.ellipsis ,
+            overflow: TextOverflow.ellipsis,
             style: TextStyles.font16SemiBold,
           ),
         ],
