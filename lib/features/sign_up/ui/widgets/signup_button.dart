@@ -7,6 +7,7 @@ import 'package:movie_app/features/sign_up/logic/sign_up_cubit.dart';
 import '../../../../core/helper/hive_helper.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_style.dart';
+import '../../../../core/widgets/flutter_toast.dart';
 
 class SignUpButton extends StatelessWidget {
   const SignUpButton({super.key});
@@ -36,8 +37,13 @@ class SignUpButton extends StatelessWidget {
           listener: (context,state) {
             if (state is SignUpSuccess) {
               HiveHelpers.myBox!.put("notShowAuthScreen", "true");
+              showFlutterToastError(state.message);
               context.pushReplacementNamed(Routes.homeScreen);
             }
+            if(state is SignUpError)
+              {
+                showFlutterToastError(state.errorMessage);
+              }
           },
           builder: (context, state) {
             if(state is SignUpLoading){
@@ -46,8 +52,11 @@ class SignUpButton extends StatelessWidget {
               );
             }
             return Text(
-              'Sign-Up',
-              style: TextStyles.font24Bold.copyWith(color: Colors.black),
+                "Sign-Up",
+                textAlign: TextAlign.center,
+                style: TextStyles.font27semiBold.copyWith(
+                color: Colors.black,
+            ),
             );
           },
         ),

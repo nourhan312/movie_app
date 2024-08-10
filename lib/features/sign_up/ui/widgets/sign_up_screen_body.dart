@@ -5,46 +5,46 @@ import 'package:movie_app/features/sign_up/ui/widgets/signup_button.dart';
 import 'package:movie_app/features/sign_up/ui/widgets/signup_text_form_filed_section.dart';
 import '../../../../core/theming/text_style.dart';
 
-
 class SignUpScreenBody extends StatelessWidget {
   const SignUpScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(40.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      padding: const EdgeInsets.all(40.0),
+      height: MediaQuery.sizeOf(context).height,
+      color: Colors.black38,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 90),
+          Text(
+            'SIGN-UP',
+            style: TextStyles.font48SemiBold,
+          ),
+          const SignUpTextFormFieldSection(),
+          const SignUpButton(),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 120),
               Text(
-                'SIGN-UP',
-                style: TextStyles.font48SemiBold,
+                "Already have an acc.?",
+                style: TextStyles.font18SemiBold.copyWith(color: Colors.grey),
               ),
-              const SignUpTextFormFieldSection(),
-              const SignUpButton(),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Already have an acc.?",style: TextStyles.font18SemiBold.copyWith(
-                    color: Colors.grey
-                  ),),
-                  TextButton(
-                    onPressed: () {
-                      context.pushReplacementNamed(Routes.loginScreen);
-                    },
-                    child: Text(
-                      'LogIn Now',
-                      style: TextStyles.font18SemiBoldWhite,
-                    ),
-                  ),
-                ],
+              TextButton(
+                onPressed: () {
+                  context.pushReplacementNamed(Routes.loginScreen);
+                },
+                child: Text(
+                  'LogIn Now',
+                  style: TextStyles.font18SemiBoldWhite,
+                ),
               ),
             ],
           ),
-        ),
+        ],
+      ),
     );
   }
 }

@@ -17,8 +17,8 @@ class DontHaveAccount extends StatelessWidget {
     return Row(
       children: [
         Text(
-          "Don't have Account?",
-          style: TextStyles.font18SemiBoldWhite,
+          "Don't have Account ? ",
+          style: TextStyles.font18SemiBold.copyWith(color: Colors.grey),
         ),
         const SizedBox(
           width: 5,
