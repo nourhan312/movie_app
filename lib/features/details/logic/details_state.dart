@@ -12,7 +12,12 @@ final class ReviewError extends DetailsState {
   final String message;
   ReviewError(this.message);
 }
-
+final class SimilarLoading extends DetailsState {}
+final class SimilarSuccess extends DetailsState {}
+final class SimilarError extends DetailsState {
+  final String message;
+  SimilarError(this.message);
+}
 final class DetailsLoading extends DetailsState {}
 
 final class DetailsSuccess extends DetailsState {}

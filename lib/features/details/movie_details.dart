@@ -9,6 +9,7 @@ import 'package:movie_app/features/details/logic/details_cubit.dart';
 import 'package:movie_app/features/details/ui/widgets/cast_iteam.dart';
 import 'package:movie_app/features/details/ui/widgets/custom__icon_button.dart';
 import 'package:movie_app/features/details/ui/widgets/genres_section.dart';
+import 'package:movie_app/features/details/ui/widgets/movie_iteam.dart';
 import 'package:movie_app/features/details/ui/widgets/overview_text.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -117,6 +118,7 @@ class MovieDetails extends StatelessWidget {
                   ),
                   verticalSpace(5.h),
                   Text(
+                    textAlign: TextAlign.center,
                     context.read<DetailsCubit>().details!.title,
                     style: TextStyles.font24SemiBoldWhite,
                   ),
@@ -215,6 +217,33 @@ class MovieDetails extends StatelessWidget {
                         }),
                   ),
                   verticalSpace(10.h),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: Row(
+                      children: [
+                        Text(
+                          textAlign: TextAlign.start,
+                          "Similar Movies",
+                          style: TextStyles.font18Bold
+                              .copyWith(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 200.h,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: context.read<DetailsCubit>().similarList!.length,
+                        itemBuilder: (context, index) {
+                          return buildGridViewItem(
+                            context
+                                .read<DetailsCubit>().similarList![index],
+                            context,
+                          );
+                        }),
+                  ),
+
                 ],
               ),
             ),

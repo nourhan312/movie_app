@@ -50,7 +50,9 @@ class AppRouter {
                   ..movieDetails(id: arguments.id)
                   ..getReviews(id: arguments.id)
                   ..getMovieCredits(id: arguments.id)
-                  ..getVideo(id: arguments.id),
+                  ..getVideo(id: arguments.id)
+                  ..getSimilar(id: arguments.id),
+
                 child: MovieDetails(
                   movie: arguments,
                 )),
