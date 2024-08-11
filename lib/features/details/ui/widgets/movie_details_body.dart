@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/features/details/ui/widgets/recommendation_movies.dart';
 import 'package:movie_app/features/details/ui/widgets/similar_section.dart';
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/theming/text_style.dart';
@@ -49,6 +50,8 @@ class MovieDetailsBody extends StatelessWidget {
           const CastSection(),
           verticalSpace(10.h),
           const SimilarSection(),
+          verticalSpace(10.h),
+          const RecommendationSection(),
         ],
       ),
     );
