@@ -9,13 +9,14 @@ class CustomIconButton extends StatelessWidget {
     required this.onTap,
     required this.color,
     this.value = 5,
+    this.iconColor = Colors.white,
   });
   final IconData icon;
   final void Function() onTap;
 
   final Color color;
   final double value;
-
+  final iconColor ;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -28,7 +29,7 @@ class CustomIconButton extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          color: Colors.white,
+          color: iconColor,
           size: 27.sp,
         ),
       ),

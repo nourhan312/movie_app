@@ -36,7 +36,8 @@ class CastTab extends StatelessWidget {
             shape: BoxShape.circle,
             color: Colors.white,
           ),
-          child: ClipOval(
+          child:
+          ClipOval(
             child: CachedNetworkImage(
               width: 100,
               height: 120,

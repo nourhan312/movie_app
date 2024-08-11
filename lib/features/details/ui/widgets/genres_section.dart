@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theming/text_style.dart';
+
 class GenresSection extends StatelessWidget {
   const GenresSection({
     super.key,
@@ -15,13 +17,10 @@ class GenresSection extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
+           Text(
             "Genres:",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+            style:  TextStyles.font18Bold
+                .copyWith(color: Colors.white),
           ),
           const SizedBox(width: 8),
           Flexible(
@@ -48,8 +47,9 @@ class GenresSection extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [
-            Colors.blueAccent,
-            Colors.lightBlueAccent,
+
+            Color(0xff343A40), // Dark grey
+            Color(0xff495057), // Slightly lighter grey
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
