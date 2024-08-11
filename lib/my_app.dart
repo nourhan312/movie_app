@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
             minTextAdapt: true,
             child: MaterialApp(
               title: 'Movie App',
-              home: const MovieDetails(),
               debugShowCheckedModeBanner: false,
               onGenerateRoute: appRouter.generateRoute,
             )),

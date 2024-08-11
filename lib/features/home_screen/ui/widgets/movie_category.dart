@@ -31,7 +31,7 @@ class MovieCategory extends StatelessWidget {
 
   InkWell buildGridViewItem(Movie movie, BuildContext context) {
     return InkWell(
-      onTap: () => context.pushNamed(Routes.detailsScreen, arguments: movie),
+      onTap: () => context.pushNamed(Routes.movieDetails, arguments: movie),
       child: Column(
         children: [
           ClipRRect(
