@@ -35,7 +35,7 @@ class MovieCategory extends StatelessWidget {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(15),
             child: CachedNetworkImage(
               imageUrl: "https://image.tmdb.org/t/p/w500/${movie.posterPath}",
               fit: BoxFit.cover,

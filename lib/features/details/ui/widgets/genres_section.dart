@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/text_style.dart';
+import '../../logic/details_cubit.dart';
 
 class GenresSection extends StatelessWidget {
   const GenresSection({
     super.key,
-    required this.genres,
   });
 
-  final List genres;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: EdgeInsets.symmetric(vertical: 8.0.h,horizontal: 20.w),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -27,11 +28,11 @@ class GenresSection extends StatelessWidget {
             child: SizedBox(
               height: 40,
               child: ListView.builder(
-                itemCount: genres.length,
+                itemCount: context.read<DetailsCubit>().details!.genres.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                  child: _buildGenreChip(genres[index].name.toString()),
+                  child: _buildGenreChip(context.read<DetailsCubit>().details!.genres[index].name.toString()),
                 ),
               ),
             ),

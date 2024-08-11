@@ -9,11 +9,13 @@ import '../../data/models/movie_credits.dart';
 
 class CastItem extends StatelessWidget {
   const CastItem({
-    super.key, this.credits, required this.index,
+    super.key,
+    this.credits,
+    required this.index,
   });
 
   final MovieCredits? credits;
-  final int index ;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,8 +33,7 @@ class CastItem extends StatelessWidget {
                 height: 60.h,
                 fit: BoxFit.cover,
               ),
-              placeholder: (context, url) =>
-                  Shimmer.fromColors(
+              placeholder: (context, url) => Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,
                 child: Container(
@@ -41,21 +42,22 @@ class CastItem extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              imageUrl: 'https://image.tmdb.org/t/p/w500${credits!.cast![index].profilePath}',
+              imageUrl:
+                  'https://image.tmdb.org/t/p/w500${credits!.cast![index].profilePath}',
             ),
           ),
-           Container(
-             alignment: Alignment.center,
-
-             child: Text(
+          Container(
+            width: 60,
+            alignment: Alignment.center,
+            child: Text(
               credits!.cast![index].name.toString(),
               style: TextStyles.textSkip.copyWith(
                 fontSize: 15.sp,
-
               ),
-               maxLines: 2,
-                       ),
-           ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
+          ),
         ],
       ),
     );
