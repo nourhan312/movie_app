@@ -29,6 +29,7 @@ class SignUpTextFormFieldSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           CustomTexFormField(
+            keyboardType: TextInputType.phone,
             hintStyle: TextStyles.font16Medium,
             hintText: "Enter your Phone Number",
             controller: context.read<SignUpCubit>().phoneNumberController,
@@ -41,6 +42,7 @@ class SignUpTextFormFieldSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           CustomTexFormField(
+            keyboardType: TextInputType.emailAddress,
             hintStyle: TextStyles.font16Medium,
             hintText: 'Enter your E-mail',
             controller: context.read<SignUpCubit>().emailController,
@@ -53,6 +55,7 @@ class SignUpTextFormFieldSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           CustomTexFormField(
+            keyboardType: TextInputType.visiblePassword,
             hintStyle: TextStyles.font16Medium,
             hintText: 'Enter Password',
             isPassword: true,

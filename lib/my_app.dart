@@ -36,10 +36,6 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               title: 'Movie App',
               debugShowCheckedModeBanner: false,
-              // initialRoute:
-              //     HiveHelpers.myBox!.get("notShowAuthScreen") == "true"
-              //         ? Routes.homeScreen
-              //         : Routes.onBoardingScreen,
               onGenerateRoute: appRouter.generateRoute,
             )),
       ),
