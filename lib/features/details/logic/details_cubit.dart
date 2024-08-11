@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/networking/services/get_credits.dart';
+import 'package:movie_app/core/networking/services/get_recommendations.dart';
 import 'package:movie_app/core/networking/services/get_similar_movie.dart';
 import 'package:movie_app/features/details/data/models/video_lancher_model.dart';
 
@@ -21,6 +22,20 @@ class DetailsCubit extends Cubit<DetailsState> {
   MovieCredits? movieCredits;
   List<Results>? videoList;
   List<Movie> ?similarList ;
+  List <Movie> ? recommendList;
+
+
+  void getRecommendations({
+    required int id,
+  }) async {
+    emit(RecommendationsLoading());
+    try {
+      recommendList = await GetRecommendations.getRecommendations(id: id);
+      emit(RecommendationsSuccess());
+    } catch (e) {
+      emit(RecommendationsError(e.toString()));
+    }
+  }
 
   void getSimilar({
     required int id,
