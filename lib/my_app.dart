@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app/features/details/movie_details.dart';
-import 'core/helper/hive_helper.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/fav/logic/fav_cubit.dart';
@@ -35,9 +33,12 @@ class MyApp extends StatelessWidget {
             minTextAdapt: true,
             child: MaterialApp(
               title: 'Movie App',
+              initialRoute: Routes.homeScreen,
               debugShowCheckedModeBanner: false,
+              // initialRoute: HiveHelpers.myBox!.get("notShowAuthScreen") == "true" ? Routes.homeScreen : Routes.onBoardingScreen,
               onGenerateRoute: appRouter.generateRoute,
-            )),
+            ),
+        ),
       ),
     );
   }

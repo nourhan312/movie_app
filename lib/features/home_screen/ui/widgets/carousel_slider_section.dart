@@ -16,7 +16,7 @@ class CarouselSliderSection extends StatelessWidget {
       builder: (context, state) {
         if (state is TrendingMoviesLoading) {
           return SizedBox(
-            height: 335,
+            height: 355,
             child: CarouselSlider.builder(
               itemCount: 10,
               itemBuilder: (BuildContext context, int index, int realIndex) {
@@ -25,7 +25,7 @@ class CarouselSliderSection extends StatelessWidget {
                 );
               },
               options: CarouselOptions(
-                  height: 335,
+                  height: 355,
                   autoPlay: true,
                   enlargeCenterPage: true,
                   viewportFraction: 0.8,
@@ -39,7 +39,7 @@ class CarouselSliderSection extends StatelessWidget {
           return const Text("Please Check the Internet connection");
         }
         return SizedBox(
-          height: 335,
+          height: 355,
           child: CarouselSlider.builder(
             itemCount: context.read<TrendingCubit>().trendingMovies.length,
             itemBuilder: (BuildContext context, int index, int realIndex) {
@@ -49,7 +49,7 @@ class CarouselSliderSection extends StatelessWidget {
               );
             },
             options: CarouselOptions(
-                height: 335,
+                height: 355,
                 autoPlay: true,
                 enlargeCenterPage: true,
                 viewportFraction: 0.8,

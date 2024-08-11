@@ -29,7 +29,7 @@ class TrendingListViewItem extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl:
                         'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
-                    height: 260,
+                    height: 280,
                     width: double.infinity,
                     fit: BoxFit.fill,
                     placeholder: (context, url) => ShimmerTrendingListViewItem(
@@ -46,3 +46,35 @@ class TrendingListViewItem extends StatelessWidget {
     );
   }
 }
+// class ShimmerTrendingListViewItem extends StatelessWidget {
+//   const ShimmerTrendingListViewItem({super.key, required this.index});
+//   final int index;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+//       child: SizedBox(
+//         child: Stack(
+//           alignment: Alignment.bottomLeft,
+//           children: [
+//             Align(
+//               alignment: Alignment.topRight,
+//               child: ClipRRect(
+//                 borderRadius: BorderRadius.circular(15),
+//                 child: Shimmer.fromColors(
+//                   baseColor: Colors.grey[300]!,
+//                   highlightColor: Colors.grey[100]!,
+//                   child: Container(
+//                     height: 260,
+//                     width: double.infinity,
+//                     color: Colors.white,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
