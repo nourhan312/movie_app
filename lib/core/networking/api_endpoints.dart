@@ -18,4 +18,5 @@ class ApiEndPoints {
   static String movieTrending() => '/trending/movie/day';
 
   static String movieVideo(int movieId) => '/movie/$movieId/videos';
+  static String movieRecommendations(int movieId) => '/movie/$movieId/recommendations';
 }

@@ -243,7 +243,33 @@ class MovieDetails extends StatelessWidget {
                           );
                         }),
                   ),
-
+                  verticalSpace(10.h),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: Row(
+                      children: [
+                        Text(
+                          textAlign: TextAlign.start,
+                          "Recommendations",
+                          style: TextStyles.font18Bold
+                              .copyWith(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 200.h,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: context.read<DetailsCubit>().recommendList?.length,
+                        itemBuilder: (context, index) {
+                          return buildGridViewItem(
+                            context
+                                .read<DetailsCubit>().recommendList![index],
+                            context,
+                          );
+                        }),
+                  ),
                 ],
               ),
             ),

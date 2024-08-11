@@ -26,7 +26,12 @@ final class DetailsError extends DetailsState {
   final String message;
   DetailsError(this.message);
 }
-
+final class RecommendationsLoading extends DetailsState {}
+final class RecommendationsSuccess extends DetailsState {}
+final class RecommendationsError extends DetailsState {
+  final String message;
+  RecommendationsError(this.message);
+}
 final class CreditLoading extends DetailsState {}
 
 final class CreditSuccess extends DetailsState {}
