@@ -21,4 +21,9 @@ class TrendingCubit extends Cubit<TrendingState> {
       emit(TrendingMoviesError(e.toString()));
     }
   }
+  int selectedIndex = 0;
+  void selectTab(int index) {
+    selectedIndex = index;
+    emit(TrendingTabChanged(index: index));
+  }
 }

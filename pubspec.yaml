@@ -47,6 +47,7 @@ dependencies:
   url_launcher: ^6.3.0
   share_plus: ^10.0.1
   fluttertoast: ^8.2.6
+  animations: ^2.0.5
 
 dependency_overrides:
   web: ^1.0.0
