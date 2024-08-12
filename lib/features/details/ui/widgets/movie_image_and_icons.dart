@@ -1,16 +1,14 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
-
 import '../../../../core/helper/spacing.dart';
 import '../../../home_screen/data/models/movie_model.dart';
 import '../../logic/details_cubit.dart';
 import '../../logic/url_lunsher_helper/url_luncher.dart';
+import 'animation_video_button.dart';
 import 'custom__icon_button.dart';
 import 'favourite_icon.dart';
 
@@ -28,20 +26,21 @@ class MovieImageAndIcons extends StatelessWidget {
           Container(
             foregroundDecoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xff242A32), Colors.black26,Colors.transparent],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  stops: [0.04, .5,.7],
-                )),
+              colors: [Color(0xff242A32), Colors.black26, Colors.transparent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              stops: [0.04, .5, .7],
+            )),
             child: SizedBox(
               height: 500.h,
               width: double.infinity,
               child: CachedNetworkImage(
                 imageUrl:
-                "https://image.tmdb.org/t/p/w500/${context.read<DetailsCubit>().details?.posterPath}",
-                placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) => Image.network("https://pics.clipartpng.com/No_Photography_Prohibition_Sign_PNG_Clipart-829.png"),
+                    "https://image.tmdb.org/t/p/w500/${context.read<DetailsCubit>().details?.posterPath}",
+                placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => Image.network(
+                    "https://pics.clipartpng.com/No_Photography_Prohibition_Sign_PNG_Clipart-829.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -68,8 +67,7 @@ class MovieImageAndIcons extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CustomIconButton(
-                      icon:
-                      CupertinoIcons.arrowshape_turn_up_right,
+                      icon: CupertinoIcons.arrowshape_turn_up_right,
                       onTap: () {
                         _shareMovieDetails(context);
                       },
@@ -78,18 +76,10 @@ class MovieImageAndIcons extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-                CustomIconButton(
-                  radius: 30,
-                  iconSize: 40,
-                  leftPadding: 5,
-                  icon: CupertinoIcons.play_fill,
+                AnimatedVideoButton(
                   onTap: () {
-                    launchURL(context
-                        .read<DetailsCubit>()
-                        .videoList![0]
-                        .key!);
+                    launchURL(context.read<DetailsCubit>().videoList![0].key!);
                   },
-                  color: Colors.red,
                 ),
               ],
             ),
@@ -98,6 +88,7 @@ class MovieImageAndIcons extends StatelessWidget {
       ),
     );
   }
+
   void _shareMovieDetails(BuildContext context) {
     final movieDetails = context.read<DetailsCubit>().details;
 
@@ -126,3 +117,6 @@ $posterUrl
     Share.share(message);
   }
 }
+
+
+

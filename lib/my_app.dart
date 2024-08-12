@@ -33,6 +33,13 @@ class MyApp extends StatelessWidget {
             minTextAdapt: true,
             child: MaterialApp(
               title: 'Movie App',
+              theme: ThemeData(
+                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                  backgroundColor:Color(0xff242A32), // Set background color here
+                  selectedItemColor: Colors.white,
+                  unselectedItemColor: Colors.grey,
+                ),
+              ),
               initialRoute: Routes.homeScreen,
               debugShowCheckedModeBanner: false,
               // initialRoute: HiveHelpers.myBox!.get("notShowAuthScreen") == "true" ? Routes.homeScreen : Routes.onBoardingScreen,

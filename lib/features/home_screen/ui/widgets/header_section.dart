@@ -19,7 +19,7 @@ class HeaderSection extends StatelessWidget {
             style: TextStyles.font18SemiBoldWhite,
           ),
           const Spacer(),
-          const PopupSection(),
+          // const PopupSection(),
         ],
       ),
     );

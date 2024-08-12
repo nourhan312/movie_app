@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/helper/spacing.dart';
 import 'package:movie_app/core/theming/text_style.dart';
 
 import '../../../core/theming/app_colors.dart';
@@ -23,37 +24,41 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorsManager.bodyApp,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: const BackButton(
-          color: Colors.white,
-        ),
-        title: const Text(
-          'Favorites',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: BlocBuilder<FavoritesCubit, FavoritesState>(
-        builder: (context, state) {
-          if (state is FavoritesLoaded) {
-            final movies = state.favorites;
-            return movies.isEmpty
-                ? Center(
-                    child: Text("No Favourite Movie.......",style: TextStyles.font18SemiBoldWhite,),
-                  )
-                : MovieCategory(
-                    movies: movies,
-                  );
-          }
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.grey,
+    return Container(
+      color: ColorsManager.bodyApp,
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 15.0),
+            child: Text(
+              'Favorites',
+              style: TextStyles.font24SemiBoldWhite,
             ),
-          );
-        },
+          ),
+          verticalSpace(15),
+          Expanded(
+            child: BlocBuilder<FavoritesCubit, FavoritesState>(
+              builder: (context, state) {
+                if (state is FavoritesLoaded) {
+                  final movies = state.favorites;
+                  return movies.isEmpty
+                      ? Center(
+                          child: Text("No Favourite Movie.......",style: TextStyles.font18SemiBoldWhite,),
+                        )
+                      : MovieCategory(
+                          movies: movies,
+                        );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.grey,
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
