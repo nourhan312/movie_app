@@ -48,6 +48,7 @@ dependencies:
   share_plus: ^10.0.1
   fluttertoast: ^8.2.6
   animations: ^2.0.5
+  connectivity_plus: ^3.0.3
 
 dependency_overrides:
   web: ^1.0.0
