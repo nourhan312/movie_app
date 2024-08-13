@@ -46,8 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
               } else {
                 return BlocBuilder<TrendingCubit, TrendingState>(
                   builder: (context, trendingState) {
-                    return HomeScreenBody(
-                      pageController: pageController,
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: HomeScreenBody(
+                        pageController: pageController,
+                      ),
                     );
                   },
                 );

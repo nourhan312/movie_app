@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helper/extentions.dart';
 import 'package:movie_app/core/routing/routes.dart';
+import 'package:movie_app/features/details/data/models/movie_arg.dart';
 import 'package:movie_app/features/home_screen/data/models/movie_model.dart';
 
 
@@ -13,7 +14,8 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-       context.pushNamed(Routes.detailsScreen,arguments: movie);
+        MovieArg movieArg = MovieArg(movie , null);
+       context.pushNamed(Routes.movieDetails,arguments: movieArg);
       },
       child: Card(
         color: Colors.transparent,
