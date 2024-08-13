@@ -39,7 +39,7 @@ class MovieImageAndIcons extends StatelessWidget {
                 imageUrl:
                     "https://image.tmdb.org/t/p/w500/${context.read<DetailsCubit>().details?.posterPath}",
                 placeholder: (context, url) =>
-                    const Center(child: CircularProgressIndicator()),
+                    const Center(child: CupertinoActivityIndicator(color: Colors.grey,radius: 15.0,)),
                 errorWidget: (context, url, error) => Image.network(
                     "https://pics.clipartpng.com/No_Photography_Prohibition_Sign_PNG_Clipart-829.png"),
                 fit: BoxFit.cover,

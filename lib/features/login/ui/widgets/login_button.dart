@@ -52,7 +52,7 @@ class LoginButton extends StatelessWidget {
               return Text(
                 "Log-In",
                 textAlign: TextAlign.center,
-                style: TextStyles.font27semiBold.copyWith(
+                style: TextStyles.font23semiBold.copyWith(
                   color: Colors.black,
                 ),
               );

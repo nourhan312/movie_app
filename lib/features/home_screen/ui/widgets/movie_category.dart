@@ -21,10 +21,9 @@ class MovieCategory extends StatelessWidget {
       if (genreMovies != null) ...genreMovies!,
     ];
 
-    // If both lists are null, show an empty container
     if (combinedList.isEmpty) {
       return const Center(
-        child: Text('No movies available.'),
+        child: CircularProgressIndicator(color: Colors.grey,),
       );
     }
 

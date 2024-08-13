@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:movie_app/core/helper/spacing.dart';
 import 'package:movie_app/core/theming/text_style.dart';
 
@@ -45,10 +46,15 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
                   if (movies.isEmpty && genresMovies.isEmpty) {
                     return Center(
-                      child: Text(
-                        "No Favourite Movie.......",
-                        style: TextStyles.font18SemiBoldWhite,
-                      ),
+                        child: Lottie.asset(
+                          'assets/images/Animation - 1723588473163.json',
+                          width: 200,
+                          height: 200,
+                          fit: BoxFit.cover,
+                          repeat: true,
+                          reverse: false,
+                          animate: true,
+                        ),
                     );
                   } else {
                     return MovieCategory(

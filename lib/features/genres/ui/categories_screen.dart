@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/features/genres/ui/widget/category_card.dart';
@@ -26,9 +27,7 @@ class CategoriesScreen extends StatelessWidget {
             child: BlocBuilder<GenresCubit, GenresState>(builder: (context, state) {
               if (state is GenresLoading || cubit.genres == null) {
                 return const Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.grey,
-                    ));
+                    child: CupertinoActivityIndicator(color: Colors.grey,radius: 20.0,));
               } else if (state is GenresError) {
                 return const Center(
                   child: Text(

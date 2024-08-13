@@ -23,7 +23,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
       bottomBarWidth: 500.w,
       showShadow: false,
       durationInMilliSeconds: 300,
-      itemLabelStyle: const TextStyle(fontSize: 10, color: Colors.white),
+      itemLabelStyle: const TextStyle(fontSize: 13, color: Colors.white),
       elevation: 1,
       bottomBarItems: const [
         BottomBarItem(

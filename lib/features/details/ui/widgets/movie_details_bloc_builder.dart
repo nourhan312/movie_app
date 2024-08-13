@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/models/movie_arg.dart';
@@ -29,7 +30,7 @@ class MovieDetailsBlocBuilder extends StatelessWidget {
             context.read<DetailsCubit>().similarList == null ||
             context.read<DetailsCubit>().recommendList == null ||
             context.read<DetailsCubit>().videoList == null) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child:CupertinoActivityIndicator(color: Colors.grey,radius: 20.0,));
         } else if (state is DetailsError ||
             state is CreditError ||
             state is ReviewError ||

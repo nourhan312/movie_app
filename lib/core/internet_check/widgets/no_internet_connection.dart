@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
-
-import '../../theming/text_style.dart';
-
+import 'package:lottie/lottie.dart';
 class NoInternetWidget extends StatelessWidget {
 
   const NoInternetWidget({super.key});
@@ -11,25 +9,26 @@ class NoInternetWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff242A32),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.wifi_off,
-            color: Colors.white,
-            size: 100,
+          Center(
+            child: Lottie.asset(
+              'assets/images/Animation - 1723588285430.json', // The path to your Lottie file
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
+              repeat: true,
+              reverse: false,
+              animate: true,
+            ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 50),
           Text(
-            "No Internet Connection",
-            style: TextStyles.font24SemiBoldWhite,
-          ),
-          SizedBox(height: 10),
-          Text(
-            "Please check your internet settings and try again.",
+            "Please check your internet settings\nand try again.",
             style: TextStyle(
-              color: Colors.white70,
-              fontSize: 16,
+              color: Colors.white,
+              fontSize: 18,
             ),
             textAlign: TextAlign.center,
           ),

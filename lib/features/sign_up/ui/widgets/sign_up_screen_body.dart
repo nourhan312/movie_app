@@ -29,8 +29,8 @@ class SignUpScreenBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Already have an acc.?",
-                style: TextStyles.font18SemiBold.copyWith(color: Colors.grey),
+                "Already have an Account?",
+                style: TextStyles.font14Medium,
               ),
               TextButton(
                 onPressed: () {

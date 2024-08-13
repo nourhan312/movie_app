@@ -32,6 +32,7 @@ class _MovieTabsState extends State<MovieTabs>
       child: Column(
         children: [
           TabBar(
+            labelStyle: TextStyle(fontWeight: FontWeight.bold),
             dividerColor: Colors.transparent,
             labelColor: Colors.white,
             indicatorColor: ColorsManager.mainBlue,
