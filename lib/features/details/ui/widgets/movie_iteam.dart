@@ -7,10 +7,14 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_style.dart';
 import '../../../home_screen/data/models/movie_model.dart';
+import '../../data/models/movie_arg.dart';
 
 InkWell buildSimilarMovieItem(Movie movie, BuildContext context) {
   return InkWell(
-    onTap: () => context.pushNamed(Routes.movieDetails, arguments: movie),
+    onTap: () {
+      MovieArg movies = MovieArg(movie, null);
+      context.pushNamed(Routes.movieDetails, arguments: movies);
+    },
     child: Column(
       children: [
         ClipRRect(

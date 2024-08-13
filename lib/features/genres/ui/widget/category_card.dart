@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/helper/extentions.dart';
-import 'package:movie_app/features/details/data/models/movie_arg.dart';
-
-import '../../../core/routing/routes.dart';
+import '../../../../core/routing/routes.dart';
 
 class CategoryCard extends StatelessWidget {
   final String categoryName;
   final int id;
 
-  const CategoryCard({required this.categoryName, required this.id});
+  const CategoryCard({super.key, required this.categoryName, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
 
       onTap: () {
-        MovieArg movieArg = MovieArg(true, null, );
          context.pushNamed(Routes.movieCategory, arguments: id);
       },
       child: Container(

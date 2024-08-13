@@ -6,9 +6,7 @@ class Routes {
   static const String searchScreen = '/searchScreen';
   static const String detailsScreen = '/detailsScreen';
   static const String favScreen = '/favScreen';
-
   static const String movieDetails= '/movieDetails';
-
   static const String movieGenres = '/movieGenres';
   static const String movieCategory = '/movieCategory';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:movie_app/core/theming/app_colors.dart';
 
 class NoResultsPage extends StatelessWidget {
@@ -9,20 +10,14 @@ class NoResultsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsManager.bodyApp,
       body:  Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/images/no-results.png",width: 50,height: 50,),
-            const SizedBox(height: 20),
-            const Text(
-              'We Are Sorry, We Can Not Find The Movie :(',
-                style: TextStyle(
-                color: Colors.white
-            ),
-              textAlign: TextAlign.center,
-
-            ),
-          ],
+        child: Lottie.asset(
+          'assets/images/Animation - 1723576954655.json', // The path to your Lottie file
+          width: 200,
+          height: 200,
+          fit: BoxFit.cover,
+          repeat: true,
+          reverse: false,
+          animate: true,
         ),
       ),
     );

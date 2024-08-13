@@ -1,20 +1,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../home_screen/data/models/movie_model.dart';
+import '../../data/models/movie_arg.dart';
 import '../../logic/details_cubit.dart';
 import 'movie_details_body.dart';
 
 class MovieDetailsBlocBuilder extends StatelessWidget {
   const MovieDetailsBlocBuilder({
-    super.key,
-    required this.movie, this.isMovieGenres ,
-
+    super.key, required this.movies,
   });
 
-  final Movie ? movie;
-  final bool  ? isMovieGenres ;
+  final MovieArg movies ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +42,7 @@ class MovieDetailsBlocBuilder extends StatelessWidget {
           );
         } else {
           return MovieDetailsBody(
-            movie: movie!,
+            movies: movies,
           );
         }
       },

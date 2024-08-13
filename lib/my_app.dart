@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app/features/genres/logic/genres_cubit.dart';
+import 'core/helper/hive_helper.dart';
 import 'core/internet_check/cubit/internet_check__cubit.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/fav/logic/fav_cubit.dart';
-import 'features/genres/ui/genres_screen.dart';
 import 'features/home_screen/logic/categories_cubit/categories_cubit.dart';
 
 class MyApp extends StatelessWidget {
@@ -48,10 +47,8 @@ class MyApp extends StatelessWidget {
                 unselectedItemColor: Colors.grey,
               ),
             ),
-           // initialRoute: Routes.homeScreen,
             debugShowCheckedModeBanner: false,
-            initialRoute: Routes.movieGenres,
-            // initialRoute: HiveHelpers.myBox!.get("notShowAuthScreen") == "true" ? Routes.homeScreen : Routes.onBoardingScreen,
+            initialRoute: HiveHelpers.myBox!.get("notShowAuthScreen") == "true" ? Routes.homeScreen : Routes.onBoardingScreen,
             onGenerateRoute: appRouter.generateRoute,
           ),
         ),

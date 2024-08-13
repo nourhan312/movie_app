@@ -36,7 +36,7 @@ class LoginButton extends StatelessWidget {
             listener: (context, state) {
               if (state is LoginSuccess) {
                 HiveHelpers.myBox!.put("notShowAuthScreen", "true");
-                showFlutterToastError(state.msg);
+                showFlutterToastSuccess(state.msg);
                 context.pushReplacementNamed(Routes.homeScreen);
               }
               if (state is LoginError) {

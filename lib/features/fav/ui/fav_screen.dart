@@ -7,7 +7,6 @@ import '../../../core/theming/app_colors.dart';
 import '../../home_screen/ui/widgets/movie_category.dart';
 import '../logic/fav_cubit.dart';
 import '../logic/fav_state.dart';
-
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
 
@@ -41,14 +40,22 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             child: BlocBuilder<FavoritesCubit, FavoritesState>(
               builder: (context, state) {
                 if (state is FavoritesLoaded) {
-                  final movies = state.favorites;
-                  return movies.isEmpty
-                      ? Center(
-                          child: Text("No Favourite Movie.......",style: TextStyles.font18SemiBoldWhite,),
-                        )
-                      : MovieCategory(
-                          movies: movies,
-                        );
+                  final movies = state.movies;
+                  final genresMovies = state.genresMovies;
+
+                  if (movies.isEmpty && genresMovies.isEmpty) {
+                    return Center(
+                      child: Text(
+                        "No Favourite Movie.......",
+                        style: TextStyles.font18SemiBoldWhite,
+                      ),
+                    );
+                  } else {
+                    return MovieCategory(
+                      movies: movies,
+                      genreMovies: genresMovies,
+                    );
+                  }
                 }
                 return const Center(
                   child: CircularProgressIndicator(

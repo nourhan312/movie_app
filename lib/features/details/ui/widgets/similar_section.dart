@@ -28,19 +28,20 @@ class SimilarSection extends StatelessWidget {
             builder: (context, state) {
               return SizedBox(
                 height: 230.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: context.read<DetailsCubit>().similarList!.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 15.0),
-                      child: buildSimilarMovieItem(
-                        context.read<DetailsCubit>().similarList![index],
-                        context,
+                child:  ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount:
+                            context.read<DetailsCubit>().similarList!.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
+                            child: buildSimilarMovieItem(
+                              context.read<DetailsCubit>().similarList![index],
+                              context,
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               );
             },
           ),
@@ -49,4 +50,3 @@ class SimilarSection extends StatelessWidget {
     );
   }
 }
-

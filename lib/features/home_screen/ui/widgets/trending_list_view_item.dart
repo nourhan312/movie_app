@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helper/extentions.dart';
 import 'package:movie_app/core/routing/routes.dart';
+import 'package:movie_app/features/details/data/models/movie_arg.dart';
 import 'package:movie_app/features/home_screen/ui/widgets/shimmer_trending_list_view_item.dart';
 import 'package:movie_app/features/home_screen/ui/widgets/trending_number.dart';
 
@@ -15,7 +16,10 @@ class TrendingListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.pushNamed(Routes.movieDetails, arguments: movie),
+      onTap: () {
+        MovieArg movies = MovieArg(movie, null);
+        context.pushNamed(Routes.movieDetails, arguments: movies);
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
         child: SizedBox(

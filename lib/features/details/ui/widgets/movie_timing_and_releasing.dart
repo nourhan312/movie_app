@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/text_style.dart';
-import '../../../genres/data/models/movies_depends_on_genre_id.dart';
 import '../../logic/details_cubit.dart';
 
 class MovieTimeAndReleasing extends StatelessWidget {
@@ -19,7 +18,6 @@ class MovieTimeAndReleasing extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-
           '${context.read<DetailsCubit>().details!.releaseDate.toString().substring(0, 10)} ',
           style: TextStyles.textSkip.copyWith(
             fontSize: 16,

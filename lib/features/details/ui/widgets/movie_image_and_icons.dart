@@ -5,8 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../../core/helper/spacing.dart';
-import '../../../genres/data/models/movies_depends_on_genre_id.dart';
-import '../../../home_screen/data/models/movie_model.dart';
+import '../../data/models/movie_arg.dart';
 import '../../logic/details_cubit.dart';
 import '../../logic/url_lunsher_helper/url_luncher.dart';
 import 'animation_video_button.dart';
@@ -14,11 +13,9 @@ import 'custom__icon_button.dart';
 import 'favourite_icon.dart';
 
 class MovieImageAndIcons extends StatelessWidget {
-  const MovieImageAndIcons({super.key, required this.movie, this.moviesGeneres, this.isMovieGenres});
+  const MovieImageAndIcons({super.key, required this.movies});
+  final MovieArg movies;
 
-  final Movie ? movie;
-  final GenresMovie ? moviesGeneres ;
-  final bool  ? isMovieGenres ;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -28,12 +25,13 @@ class MovieImageAndIcons extends StatelessWidget {
         children: [
           Container(
             foregroundDecoration: const BoxDecoration(
-                gradient: LinearGradient(
-              colors: [Color(0xff242A32), Colors.black26, Colors.transparent],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              stops: [0.04, .5, .7],
-            )),
+              gradient: LinearGradient(
+                colors: [Color(0xff242A32), Colors.black26, Colors.transparent],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                stops: [0.04, .5, .7],
+              ),
+            ),
             child: SizedBox(
               height: 500.h,
               width: double.infinity,
@@ -62,7 +60,7 @@ class MovieImageAndIcons extends StatelessWidget {
                       color: Colors.black87.withOpacity(0.8),
                     ),
                     const Spacer(),
-                 isMovieGenres! ? const SizedBox() :   FavouriteIcon(movie: movie!),
+                    FavouriteIcon(movies: movies),
                   ],
                 ),
                 verticalSpace(15),
@@ -120,6 +118,3 @@ $posterUrl
     Share.share(message);
   }
 }
-
-
-

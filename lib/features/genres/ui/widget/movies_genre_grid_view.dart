@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helper/extentions.dart';
+import 'package:movie_app/features/details/data/models/movie_arg.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/theming/text_style.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/theming/text_style.dart';
 
-import '../data/models/movies_depends_on_genre_id.dart';
+import '../../data/models/movies_depends_on_genre_id.dart';
 
-class MovieGernresCategory extends StatelessWidget {
-  const MovieGernresCategory({super.key, required this.movies});
+class MovieGenresGridView extends StatelessWidget {
+  const MovieGenresGridView({super.key, required this.movies});
 
   final List<GenresMovie> movies;
 
@@ -32,7 +33,10 @@ class MovieGernresCategory extends StatelessWidget {
 
   InkWell buildGridViewItem(GenresMovie movie, BuildContext context) {
     return InkWell(
-      onTap: () => context.pushNamed(Routes.movieDetails, arguments: movie),
+      onTap: () {
+        MovieArg movies = MovieArg(null, movie);
+        context.pushNamed(Routes.movieDetails, arguments: movies);
+      },
       child: Column(
         children: [
           ClipRRect(
