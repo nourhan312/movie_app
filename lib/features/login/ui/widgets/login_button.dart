@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/helper/extentions.dart';
@@ -45,8 +46,8 @@ class LoginButton extends StatelessWidget {
             },
             builder: (context, state) {
               if (state is LoginLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return  Center(
+                  child: CupertinoActivityIndicator(color: Colors.black,radius: 15.0,),
                 );
               }
               return Text(

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/helper/extentions.dart';
@@ -47,9 +48,7 @@ class SignUpButton extends StatelessWidget {
           },
           builder: (context, state) {
             if(state is SignUpLoading){
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return CupertinoActivityIndicator(color: Colors.black,radius: 15.0,);
             }
             return Text(
                 "Sign-Up",

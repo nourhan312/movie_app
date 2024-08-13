@@ -4,7 +4,7 @@
 
 
     <application
-        android:label="movie_app"
+        android:label="Movie App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

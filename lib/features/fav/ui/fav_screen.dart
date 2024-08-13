@@ -43,17 +43,19 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 if (state is FavoritesLoaded) {
                   final movies = state.movies;
                   final genresMovies = state.genresMovies;
-
                   if (movies.isEmpty && genresMovies.isEmpty) {
                     return Center(
-                        child: Lottie.asset(
-                          'assets/images/Animation - 1723588473163.json',
-                          width: 200,
-                          height: 200,
-                          fit: BoxFit.cover,
-                          repeat: true,
-                          reverse: false,
-                          animate: true,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Lottie.asset(
+                            'assets/images/Animation - 1723588473163.json',
+                            width: 200,
+                            height: 200,
+                            fit: BoxFit.cover,
+                            repeat: true,
+                            reverse: false,
+                            animate: true,
+                          ),
                         ),
                     );
                   } else {
