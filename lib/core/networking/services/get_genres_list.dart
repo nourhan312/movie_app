@@ -9,7 +9,7 @@ import '../api_endpoints.dart';
 import '../dio_helper.dart';
 
 class GetGenresList {
-  static getDetails({required int id}) async {
+  static getDetails() async {
     try {
       final response =
       await DioHelper.getData(path: ApiEndPoints.genresList);

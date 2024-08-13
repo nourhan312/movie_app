@@ -8,4 +8,6 @@ class Routes {
   static const String favScreen = '/favScreen';
 
   static const String movieDetails= '/movieDetails';
+
+  static const String movieGenres = '/movieGenres';
 }
