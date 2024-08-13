@@ -33,10 +33,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       );
       signUpResponse = SignUpResponse.fromJson(response.data);
       if(signUpResponse.status == true){
-        // TokenHelper.saveToken(signUpResponse.data!.token!);
-        emit(SignUpSuccess());
+        emit(SignUpSuccess(message: signUpResponse.message.toString()));
       }else{
-        log(signUpResponse.message.toString());
         emit(SignUpError(errorMessage: signUpResponse.message.toString()));
       }
     }catch(e){

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:movie_app/core/helper/login_hive_helper.dart';
 import 'package:movie_app/core/networking/auth_api.dart';
 import 'package:movie_app/features/login/data/models/LoginModel.dart';
 
@@ -29,10 +27,9 @@ class LoginCubit extends Cubit<LoginState> {
       );
       loginModel = LoginModel.fromJson(response.data);
       if(loginModel.status == true){
-        TokenHelper.saveToken(loginModel.data!.token!);
-        emit(LoginSuccess(loginModel.message!));
+        emit(LoginSuccess(loginModel.message.toString()));
       }else{
-        emit(LoginError(loginModel.message!));
+        emit(LoginError(loginModel.message.toString()));
       }
     }catch(e){
       emit(LoginError("An error occurred"));

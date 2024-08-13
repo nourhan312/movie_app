@@ -15,3 +15,8 @@ class TrendingMoviesError extends TrendingState {
   TrendingMoviesError(this.message);
 }
 
+final class TrendingTabChanged extends TrendingState {
+  final int index;
+
+  TrendingTabChanged({required this.index});
+}

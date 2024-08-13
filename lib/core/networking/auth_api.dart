@@ -9,7 +9,7 @@ class AuthApi {
       BaseOptions(
         baseUrl: baseUrl,
         headers: {
-          "lang": "ar",
+          "lang": "en",
           "Content-Type": "application/json",
         },
       ),

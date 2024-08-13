@@ -41,16 +41,16 @@ class TabBarViewSection extends StatelessWidget {
             controller: _tabController,
             children: [
               MovieCategory(
-                movies: context.read<CategoriesCubit>().popularMovies,
+                movies: context.read<CategoriesCubit>().popularMovies,genreMovies: null,
               ),
               MovieCategory(
-                movies: context.read<CategoriesCubit>().topRatedMovies,
+                movies: context.read<CategoriesCubit>().topRatedMovies,genreMovies: null,
               ),
               MovieCategory(
-                movies: context.read<CategoriesCubit>().upComingMovies,
+                movies: context.read<CategoriesCubit>().upComingMovies,genreMovies: null,
               ),
               MovieCategory(
-                movies: context.read<CategoriesCubit>().nowPlayingMovies,
+                movies: context.read<CategoriesCubit>().nowPlayingMovies,genreMovies: null,
               ),
             ],
           ),

@@ -22,7 +22,7 @@ class ShimmerTrendingListViewItem extends StatelessWidget {
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,
                   child: Container(
-                    height: 260,
+                    height: 280,
                     width: double.infinity,
                     color: Colors.white,
                   ),
