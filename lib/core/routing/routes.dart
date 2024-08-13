@@ -10,4 +10,5 @@ class Routes {
   static const String movieDetails= '/movieDetails';
 
   static const String movieGenres = '/movieGenres';
+  static const String movieCategory = '/movieCategory';
 }

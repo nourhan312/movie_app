@@ -13,7 +13,9 @@ class GetGenresList {
     try {
       final response =
       await DioHelper.getData(path: ApiEndPoints.genresList);
-      return GenresDetails.fromJson(response.data);
+      GenresDetails genersDetails = GenresDetails.fromJson(response.data);
+
+      return genersDetails.genres;
     } on DioException catch (e) {
       if (kDebugMode) {
         print(e.toString());

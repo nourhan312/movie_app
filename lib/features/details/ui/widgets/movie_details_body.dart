@@ -5,6 +5,7 @@ import 'package:movie_app/features/details/ui/widgets/recommendation_movies.dart
 import 'package:movie_app/features/details/ui/widgets/similar_section.dart';
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/theming/text_style.dart';
+import '../../../genres/data/models/movies_depends_on_genre_id.dart';
 import '../../../home_screen/data/models/movie_model.dart';
 import '../../logic/details_cubit.dart';
 import 'cast_section.dart';
@@ -15,8 +16,11 @@ import 'movie_timing_and_releasing.dart';
 import 'overview_text.dart';
 
 class MovieDetailsBody extends StatelessWidget {
-  const MovieDetailsBody({super.key, required this.movie});
-  final Movie movie;
+  const MovieDetailsBody({super.key, required this.movie, this.isMovieGenres,
+    this.moviesGeneres,});
+  final Movie ? movie;
+  final bool  ? isMovieGenres ;
+  final GenresMovie ? moviesGeneres ;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -24,12 +28,12 @@ class MovieDetailsBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           MovieImageAndIcons(
-            movie: movie,
+            movie: movie!,
           ),
           verticalSpace(5.h),
           Text(
             textAlign: TextAlign.center,
-            context.read<DetailsCubit>().details!.title,
+             context.read<DetailsCubit>().details!.title,
             style: TextStyles.font24SemiBoldWhite,
           ),
           verticalSpace(5.h),

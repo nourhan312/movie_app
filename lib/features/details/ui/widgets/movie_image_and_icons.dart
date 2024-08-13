@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../../core/helper/spacing.dart';
+import '../../../genres/data/models/movies_depends_on_genre_id.dart';
 import '../../../home_screen/data/models/movie_model.dart';
 import '../../logic/details_cubit.dart';
 import '../../logic/url_lunsher_helper/url_luncher.dart';
@@ -13,9 +14,11 @@ import 'custom__icon_button.dart';
 import 'favourite_icon.dart';
 
 class MovieImageAndIcons extends StatelessWidget {
-  const MovieImageAndIcons({super.key, required this.movie});
+  const MovieImageAndIcons({super.key, required this.movie, this.moviesGeneres, this.isMovieGenres});
 
-  final Movie movie;
+  final Movie ? movie;
+  final GenresMovie ? moviesGeneres ;
+  final bool  ? isMovieGenres ;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -59,7 +62,7 @@ class MovieImageAndIcons extends StatelessWidget {
                       color: Colors.black87.withOpacity(0.8),
                     ),
                     const Spacer(),
-                    FavouriteIcon(movie: movie),
+                 isMovieGenres! ? const SizedBox() :   FavouriteIcon(movie: movie!),
                   ],
                 ),
                 verticalSpace(15),

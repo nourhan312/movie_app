@@ -8,9 +8,11 @@ import 'package:movie_app/features/home_screen/ui/home_screen.dart';
 import 'package:movie_app/features/login/logic/login_cubit.dart';
 import 'package:movie_app/features/on_boarding/ui/screens/on_boarding_screen.dart';
 import 'package:movie_app/features/sign_up/ui/sign_up_screen.dart';
+import '../../features/details/data/models/movie_arg.dart';
 import '../../features/details/logic/details_cubit.dart';
 import '../../features/genres/logic/genres_cubit.dart';
 import '../../features/genres/ui/genres_screen.dart';
+import '../../features/genres/ui/movie_genres.dart';
 import '../../features/home_screen/data/models/movie_model.dart';
 import '../../features/login/ui/login_screen.dart';
 
@@ -28,12 +30,23 @@ class AppRouter {
         );
 
         case Routes.movieGenres:
+
+            return MaterialPageRoute(
+              builder: (_) => BlocProvider<GenresCubit>(
+                  create: (context) => GenresCubit()..getGenres(),
+                  child:  MovieGenres()),
+            );
+
+
+      case Routes.movieCategory:
+        if( arguments is int){
+          int id = arguments;
           return MaterialPageRoute(
             builder: (_) => BlocProvider<GenresCubit>(
-                create: (context) => GenresCubit()..getGenres(),
-                child:  MovieGenres()),
+                create: (context) => GenresCubit()..getMoviesDependsOnGenreId(id: id),
+                child:  const MovieGenresList()),
           );
-
+        }
 
       case Routes.loginScreen:
         return MaterialPageRoute(
@@ -50,18 +63,18 @@ class AppRouter {
               child: const HomeScreen()),
         );
       case Routes.movieDetails:
-        if (arguments is Movie) {
+        if (arguments is MovieArg) {
           return MaterialPageRoute(
             builder: (_) => BlocProvider(
                 create: (_) => DetailsCubit()
-                  ..movieDetails(id: arguments.id)
-                  ..getReviews(id: arguments.id)
-                  ..getMovieCredits(id: arguments.id)
-                  ..getVideo(id: arguments.id)
-                  ..getSimilar(id: arguments.id)
-                  ..getRecommendations(id: arguments.id),
+                  ..movieDetails(id: arguments.isMovieGenres ? arguments.movieGenres!.id : arguments.movie!.id)
+                  ..getReviews(id: arguments.isMovieGenres ? arguments.movieGenres!.id : arguments.movie!.id)
+                  ..getMovieCredits(id: arguments.isMovieGenres ? arguments.movieGenres!.id : arguments.movie!.id)
+                  ..getVideo(id: arguments.isMovieGenres ? arguments.movieGenres!.id : arguments.movie!.id)
+                  ..getSimilar(id: arguments.isMovieGenres ? arguments.movieGenres!.id : arguments.movie!.id)
+                  ..getRecommendations(id: arguments.isMovieGenres ? arguments.movieGenres!.id : arguments.movie!.id),
                 child: MovieDetails(
-                  movie: arguments,
+                  movie: arguments.movie!,
                 )),
           );
         }

@@ -26,11 +26,11 @@ class DetailsCubit extends Cubit<DetailsState> {
 
 
   void getRecommendations({
-    required int id,
+    required int ?id,
   }) async {
     emit(RecommendationsLoading());
     try {
-      recommendList = await GetRecommendations.getRecommendations(id: id);
+      recommendList = await GetRecommendations.getRecommendations(id: id!);
       emit(RecommendationsSuccess());
     } catch (e) {
       emit(RecommendationsError(e.toString()));
@@ -38,11 +38,11 @@ class DetailsCubit extends Cubit<DetailsState> {
   }
 
   void getSimilar({
-    required int id,
+    required int ? id,
   }) async {
     emit(SimilarLoading());
     try {
-      similarList = await GetSimilarMovie.getSimilar(id: id);
+      similarList = await GetSimilarMovie.getSimilar(id: id!);
       emit(SimilarSuccess());
     } catch (e) {
       emit(SimilarError(e.toString()));
@@ -50,11 +50,11 @@ class DetailsCubit extends Cubit<DetailsState> {
   }
 
   void getReviews({
-    required int id,
+    required int ?id,
   }) async {
     emit(ReviewLoading());
     try {
-      reviewList = await GetUserReview.getReviews(id: id);
+      reviewList = await GetUserReview.getReviews(id: id!);
       emit(ReviewSuccess());
     } catch (e) {
       emit(ReviewError(e.toString()));
@@ -62,11 +62,11 @@ class DetailsCubit extends Cubit<DetailsState> {
   }
 
   void movieDetails({
-    required int id,
+    required int ? id,
   }) async {
     emit(DetailsLoading());
     try {
-      details = await GetMovieDetails.getDetails(id: id);
+      details = await GetMovieDetails.getDetails(id: id!);
       emit(DetailsSuccess());
     } catch (e) {
       emit(DetailsError(e.toString()));
@@ -74,21 +74,21 @@ class DetailsCubit extends Cubit<DetailsState> {
   }
 
   void getMovieCredits({
-    required int id,
+    required int ? id,
   }) async {
     emit(CreditLoading());
     try {
-      movieCredits = await GetCredits.getCredits(movieId: id);
+      movieCredits = await GetCredits.getCredits(movieId: id!);
       emit(CreditSuccess());
     } catch (e) {
       emit(CreditError(e.toString()));
     }
   }
 
-  void getVideo({required int id}) async {
+  void getVideo({required int  ?id}) async {
     emit((VideoLuncherLoading()));
     try {
-      videoList = await GetVideo.getVideo(id: id);
+      videoList = await GetVideo.getVideo(id: id!);
       emit(VideoLuncherSuccess());
     } catch (e) {
       emit(VideoLuncherError(e.toString()));

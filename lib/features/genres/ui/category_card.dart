@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movie_app/core/helper/extentions.dart';
+import 'package:movie_app/features/details/data/models/movie_arg.dart';
+
+import '../../../core/routing/routes.dart';
 
 class CategoryCard extends StatelessWidget {
   final String categoryName;
-  final String categoryIcon;
+  final int id;
 
-  CategoryCard({required this.categoryName, required this.categoryIcon});
+  const CategoryCard({required this.categoryName, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+
       onTap: () {
-        // Handle category tap
+        MovieArg movieArg = MovieArg(true, null, );
+         context.pushNamed(Routes.movieCategory, arguments: id);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -36,14 +42,7 @@ class CategoryCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                categoryIcon,
-                style: const TextStyle(
-                  fontSize: 36,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 10),
+
               Text(
                 categoryName,
                 style: GoogleFonts.poppins(

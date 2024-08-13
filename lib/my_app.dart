@@ -28,9 +28,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ConnectivityCubit(),
         ),
-        BlocProvider(
-          create: (context) => GenresCubit(),
-        ),
+
       ],
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
@@ -42,7 +40,7 @@ class MyApp extends StatelessWidget {
           minTextAdapt: true,
           child: MaterialApp(
             title: 'Movie App',
-            home: MovieGenres(),
+           // home: MovieGenres(),
             theme: ThemeData(
               bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                 backgroundColor: Color(0xff242A32), // Set background color here
@@ -52,6 +50,7 @@ class MyApp extends StatelessWidget {
             ),
            // initialRoute: Routes.homeScreen,
             debugShowCheckedModeBanner: false,
+            initialRoute: Routes.movieGenres,
             // initialRoute: HiveHelpers.myBox!.get("notShowAuthScreen") == "true" ? Routes.homeScreen : Routes.onBoardingScreen,
             onGenerateRoute: appRouter.generateRoute,
           ),
