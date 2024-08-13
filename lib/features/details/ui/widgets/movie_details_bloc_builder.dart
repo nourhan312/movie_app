@@ -9,10 +9,12 @@ import 'movie_details_body.dart';
 class MovieDetailsBlocBuilder extends StatelessWidget {
   const MovieDetailsBlocBuilder({
     super.key,
-    required this.movie,
+    required this.movie, this.isMovieGenres ,
+
   });
 
-  final Movie movie;
+  final Movie ? movie;
+  final bool  ? isMovieGenres ;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class MovieDetailsBlocBuilder extends StatelessWidget {
           );
         } else {
           return MovieDetailsBody(
-            movie: movie,
+            movie: movie!,
           );
         }
       },
